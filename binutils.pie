@@ -24,7 +24,7 @@ function build() {
 	cp include/libiberty.h /usr/include
 }
 
-function install() {
+function installpkg() {
 	MAKEFLAGS="$MAKEFLAGS tooldir=/usr"
 	default
 }
