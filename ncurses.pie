@@ -1,0 +1,47 @@
+# vim: ft=sh
+name="ncurses"
+version="5.9"
+desc="System V Release 4.0 curses emulation library"
+url="http://www.gnu.org/software/ncurses/"
+src="http://mirror.clarkson.edu/gnu/ncurses/ncurses-$version.tar.gz"
+bdeps="glibc"
+deps="glibc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+./configure --prefix=/usr           \
+            --mandir=/usr/share/man \
+            --with-shared           \
+            --without-debug         \
+            --enable-pc-files       \
+            --enable-widec
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	mkdir $dest_dir/lib
+	mv -v $dest_dir/usr/lib/libncursesw.so.5* $dest_dir/lib
+	ln -sfv ../../lib/libncursesw.so.5 $dest_dir/usr/lib/libncursesw.so
+
+	for lib in ncurses form panel menu ; do
+	    rm -vf                    $dest_dir/usr/lib/lib${lib}.so
+	    echo "INPUT(-l${lib}w)" > $dest_dir/usr/lib/lib${lib}.so
+	    ln -sfv lib${lib}w.a      $dest_dir/usr/lib/lib${lib}.a
+	    ln -sfv ${lib}w.pc        $dest_dir/usr/lib/pkgconfig/${lib}.pc
+	done
+
+	ln -sfv libncurses++w.a $dest_dir/usr/lib/libncurses++.a
+
+	rm -vf                     $dest_dir/usr/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" > $dest_dir/usr/lib/libcursesw.so
+	ln -sfv libncurses.so      $dest_dir/usr/lib/libcurses.so
+	ln -sfv libncursesw.a      $dest_dir/usr/lib/libcursesw.a
+	ln -sfv libncurses.a       $dest_dir/usr/lib/libcurses.a
+}
