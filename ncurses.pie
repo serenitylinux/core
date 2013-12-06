@@ -12,36 +12,56 @@ srcdir="$name-$version"
 
 
 function configure() {
-./configure --prefix=/usr           \
-            --mandir=/usr/share/man \
-            --with-shared           \
-            --without-debug         \
-            --enable-pc-files       \
-            --enable-widec
+	mkdir ncurses{,w}-build
+	cd ncursesw-build
+		../configure --prefix=/usr --mandir=/usr/share/man \
+		--with-shared --with-normal --without-debug --without-ada \
+		--enable-widec --enable-pc-files
+	cd ../ncurses-build
+		../configure --prefix=/usr \
+		--with-shared --with-normal --without-debug --without-ada
+	cd ..
 }
 
 function build() {
-	default
+	cd ncursesw-build
+		default
+	cd ../ncurses-build
+		default
+	cd ..
 }
 
 function installpkg() {
-	default
-	mkdir $dest_dir/lib
-	mv -v $dest_dir/usr/lib/libncursesw.so.5* $dest_dir/lib
-	ln -sfv ../../lib/libncursesw.so.5 $dest_dir/usr/lib/libncursesw.so
+	local pkgver=5.9
+	cd ncursesw-build
+		default
 
-	for lib in ncurses form panel menu ; do
-	    rm -vf                    $dest_dir/usr/lib/lib${lib}.so
-	    echo "INPUT(-l${lib}w)" > $dest_dir/usr/lib/lib${lib}.so
-	    ln -sfv lib${lib}w.a      $dest_dir/usr/lib/lib${lib}.a
-	    ln -sfv ${lib}w.pc        $dest_dir/usr/lib/pkgconfig/${lib}.pc
-	done
+		# fool packages looking to link to non-wide-character ncurses libraries
+		for lib in ncurses form panel menu; do
+			echo "INPUT(-l${lib}w)" >${dest_dir}/usr/lib/lib${lib}.so
+		done
 
-	ln -sfv libncurses++w.a $dest_dir/usr/lib/libncurses++.a
+		for lib in ncurses ncurses++ form panel menu; do
+			ln -s ${lib}w.pc ${dest_dir}/usr/lib/pkgconfig/${lib}.pc
+		done
 
-	rm -vf                     $dest_dir/usr/lib/libcursesw.so
-	echo "INPUT(-lncursesw)" > $dest_dir/usr/lib/libcursesw.so
-	ln -sfv libncurses.so      $dest_dir/usr/lib/libcurses.so
-	ln -sfv libncursesw.a      $dest_dir/usr/lib/libcursesw.a
-	ln -sfv libncurses.a       $dest_dir/usr/lib/libcurses.a
+		# some packages look for -lcurses during build
+		echo "INPUT(-lncursesw)" >${dest_dir}/usr/lib/libcursesw.so
+		ln -s libncurses.so ${dest_dir}/usr/lib/libcurses.so
+
+	# non-widec compatibility libraries
+	cd ../ncurses-build
+		for lib in ncurses form panel menu; do
+			install -Dm755 lib/lib${lib}.so.${pkgver} ${dest_dir}/usr/lib/lib${lib}.so.${pkgver}
+			ln -s lib${lib}.so.${pkgver} ${dest_dir}/usr/lib/lib${lib}.so.5
+		done
+
+	cd ..
+
+	mkdir -p ${dest_dir}/usr/lib64
+	cp -rf ${dest_dir}/usr/lib/* ${dest_dir}/usr/lib64/
+	# install license, rip it from the readme
+#	cd ..
+		#install -dm755 ${dest_dir}/usr/share/licenses/$pkgname
+		#grep -B 100 '$Id' README > ${dest_dir}/usr/share/licenses/${pkgname}/license.txt
 }
