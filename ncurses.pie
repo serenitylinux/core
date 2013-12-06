@@ -62,7 +62,7 @@ function installpkg() {
 	cp -rf ${dest_dir}/usr/lib/* ${dest_dir}/usr/lib64/
 	
 	#Debian hack
-	ln -s ${dest_dir}/usr/lib64/libncurses.so.5 ${dest_dir}/usr/lib64/libtinfo.so.5
+	cp ${dest_dir}/usr/lib64/libncurses.so.5 ${dest_dir}/usr/lib64/libtinfo.so.5
 	# install license, rip it from the readme
 #	cd ..
 		#install -dm755 ${dest_dir}/usr/share/licenses/$pkgname
