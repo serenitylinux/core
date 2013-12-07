@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="wget"
+version="1.14"
+desc="A network utility to retrieve files from the Web"
+url="http://www.gnu.org/software/wget/"
+src="http://mirror.clarkson.edu/gnu/$name/$name-$version.tar.xz"
+bdeps="pcre zlib util-linux"
+deps="pcre zlib util-linux"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+function configure() {
+	wget https://projects.archlinux.org/svntogit/packages.git/plain/trunk/wget-pod-fixes.patch?h=packages/wget -O wget-pod-fixes.patch
+
+	patch -p1 -i wget-pod-fixes.patch
+	./configure --prefix=/usr --sysconfdir=/etc --without-ssl
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}

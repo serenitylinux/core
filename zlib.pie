@@ -11,7 +11,7 @@ srcdir="$name-$version"
 
 
 function configure() {
-	./configure --prefix=/usr/
+	./configure --prefix=/usr/ --libdir=/usr/lib64
 	grep -A 24 '^  Copyright' zlib.h > LICENSE
 }
 
