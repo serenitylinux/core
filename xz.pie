@@ -1,0 +1,32 @@
+# vim: ft=sh
+name="xz"
+version="5.0.5"
+desc="Library and command line tools for XZ and LZMA compressed files"
+url="http://tukaani.org/xz/"
+src="http://tukaani.org/${name}/${name}-${version}.tar.gz"
+bdeps=""
+deps="bash"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr \
+		--disable-rpath \
+		--enable-werror
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+
+	mkdir -p ${dest_dir}/usr/lib64
+	ln -s ../lib/liblzma.so.5 ${dest_dir}/usr/lib64/liblzma.so.5
+	install -d -m755 ${dest_dir}/usr/share/licenses/xz/
+	ln -sf /usr/share/doc/xz/COPYING ${dest_dir}/usr/share/licenses/xz/
+	ln -sf /usr/share/licenses/common/GPL2/license.txt ${dest_dir}/usr/share/doc/xz/COPYING.GPLv2
+}
