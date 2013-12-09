@@ -16,7 +16,7 @@ function configure() {
 	cd ncursesw-build
 		../configure --prefix=/usr --mandir=/usr/share/man \
 		--with-shared --with-normal --without-debug --without-ada \
-		--enable-widec --enable-pc-files
+		--enable-widec --disable-pc-files
 	cd ../ncurses-build
 		../configure --prefix=/usr \
 		--with-shared --with-normal --without-debug --without-ada
@@ -41,9 +41,9 @@ function installpkg() {
 			echo "INPUT(-l${lib}w)" >${dest_dir}/usr/lib/lib${lib}.so
 		done
 
-		for lib in ncurses ncurses++ form panel menu; do
-			ln -s ${lib}w.pc ${dest_dir}/usr/lib/pkgconfig/${lib}.pc
-		done
+#		for lib in ncurses ncurses++ form panel menu; do
+#			ln -s ${lib}w.pc ${dest_dir}/usr/lib/pkgconfig/${lib}.pc
+#		done
 
 		# some packages look for -lcurses during build
 		echo "INPUT(-lncursesw)" >${dest_dir}/usr/lib/libcursesw.so

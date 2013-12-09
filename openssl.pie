@@ -1,0 +1,28 @@
+# vim: ft=sh
+name="openssl"
+version="1.0.1e"
+desc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security"
+url="https://www.openssl.org"
+src="http://www.openssl.org/source/$name-$version.tar.gz"
+bdeps=""
+deps=""
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	wget "https://projects.archlinux.org/svntogit/packages.git/plain/trunk/openssl-1.0.1e-fix_pod_syntax-1.patch?h=packages/openssl" -O pod.patch
+	patch -p1 -i pod.patch
+	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared zlib enable-ec_nistp_64_gcc_128 linux-x86_64 -Wa,--noexecstack
+}
+
+function build() {
+	make depend
+	make
+}
+
+function installpkg() {
+	make INSTALL_PREFIX=$dest_dir MANDIR=/usr/share/man MANSUFFIX=ssl install
+	install -D -m644 LICENSE $dest_dir/usr/share/licenses/$name/LICENSE
+}
