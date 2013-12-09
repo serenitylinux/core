@@ -1,0 +1,34 @@
+# vim: ft=sh
+name="linux-headers"
+version="3.12.4"
+desc="The Linux Kernel headers"
+url="http://kernel.org"
+src="http://mirror.clarkson.edu/linux/kernel/v3.0/linux-$version.tar.gz"
+bdeps=""
+deps=""
+arch="any"
+flags=""
+srcdir="linux-$version"
+
+
+function configure() {
+	none
+}
+
+function build() {
+	none
+}
+
+function installpkg() {
+#	default
+#	local dir="${dest_dir}/usr/lib/modules/${version}"
+
+#	install -dm755 $dir
+#	cd $dir
+
+
+	make headers_install INSTALL_HDR_PATH=${dest_dir}/usr/src/linux-headers-$version-common/
+	
+	#temporary
+	cp /usr/src/linux-headers-$version-common/include/* /usr/include/
+}
