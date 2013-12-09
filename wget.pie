@@ -11,7 +11,7 @@ flags=""
 srcdir="$name-$version"
 
 function configure() {
-	curl http://projects.archlinux.org/svntogit/packages.git/plain/trunk/wget-pod-fixes.patch?h=packages/wget -o wget-pod-fixes.patch
+	curl https://projects.archlinux.org/svntogit/packages.git/plain/trunk/wget-pod-fixes.patch?h=packages/wget -o wget-pod-fixes.patch
 
 	patch -p1 -i wget-pod-fixes.patch
 	./configure --prefix=/usr --sysconfdir=/etc --without-ssl
