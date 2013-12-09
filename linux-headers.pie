@@ -30,5 +30,6 @@ function installpkg() {
 	make headers_install INSTALL_HDR_PATH=${dest_dir}/usr/src/linux-headers-$version-common/
 	
 	#temporary
-	cp /usr/src/linux-headers-$version-common/include/* /usr/include/
+	mkdir -p ${dest_dir}/usr/include
+	cp -r ${dest_dir}/usr/src/linux-headers-$version-common/include/* ${dest_dir}/usr/include/
 }
