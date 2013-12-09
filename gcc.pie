@@ -6,7 +6,7 @@ url="http://gnu.org"
 src="http://mirror.clarkson.edu/gnu/gcc/gcc-$version/gcc-$version.tar.gz"
 #libmpfr-dev libmpc-dev libgmp-dev
 bdeps="gmp mpfr libmpc"
-deps="gmp mpfr libmpc linux-headers"
+deps="gmp mpfr libmpc linux-headers binutils"
 arch="any"
 flags=""
 srcdir="$name-$version"
