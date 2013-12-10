@@ -1,0 +1,48 @@
+# vim: ft=sh
+name="perl"
+version="5.18.1"
+desc="A highly capable, feature-rich programming language"
+url="http://www.perl.org"
+src="http://www.cpan.org/src/5.0/perl-$version.tar.gz"
+bdeps="gdbm coreutils glibc bash"
+deps="gdbm coreutils glibc bash"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+./Configure -des -Dusethreads -Duseshrplib -Doptimize="${CFLAGS}" \
+    -Dprefix=/usr -Dvendorprefix=/usr \
+    -Dprivlib=/usr/share/perl5/core_perl \
+    -Darchlib=/usr/lib/perl5/core_perl \
+    -Dsitelib=/usr/share/perl5/site_perl \
+    -Dsitearch=/usr/lib/perl5/site_perl \
+    -Dvendorlib=/usr/share/perl5/vendor_perl \
+    -Dvendorarch=/usr/lib/perl5/vendor_perl \
+    -Dscriptdir=/usr/bin/core_perl \
+    -Dsitescript=/usr/bin/site_perl \
+    -Dvendorscript=/usr/bin/vendor_perl \
+    -Dinc_version_list=none \
+    -Dman1ext=1perl -Dman3ext=3perl ${arch_opts} \
+    -Dlddlflags="-shared ${LDFLAGS}" -Dldflags="${LDFLAGS}"	
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+
+	(cd ${dest_dir}/usr/bin; mv perl${version} perl)
+	(cd ${dest_dir}/usr/bin/core_perl;  ln -sf c2ph pstruct; ln -sf s2p psed)
+	rm -f $dest_dir/usr/share/perl5/core_perl/*.pod
+	for d in $dest_dir/usr/share/perl5/core_perl/*; do
+		if [ -d $d -a $(basename $d) != "pod" ]; then
+			find $d -name *.pod -delete
+		fi
+	done
+	find $dest_dir/usr/lib -name *.pod -delete
+	find $dest_dir -name .packlist -delete
+}

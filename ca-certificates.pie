@@ -1,0 +1,35 @@
+# vim: ft=sh
+name="ca-certificates"
+version="20130906"
+desc="Common CA certificates"
+url="http://packages.qa.debian.org/c/ca-certificates.html"
+src="http://ftp.debian.org/debian/pool/main/c/${name}/${name}_${version}.tar.gz"
+bdeps="bash openssl findutils coreutils sed perl run-parts"
+deps="bash openssl findutils coreutils sed perl run-parts"
+arch="any"
+flags=""
+srcdir="$name"
+
+
+function configure() {
+	none
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	install -d -m755 ${dest_dir}/{etc/ca-certificates/update.d,usr/{sbin,share/ca-certificates},etc/ssl/certs}	
+	default
+	mv ${dest_dir}/usr/sbin ${dest_dir}/usr/bin
+	cd ${dest_dir}/usr/share/ca-certificates
+	(
+	find . -name '*.crt' | sort | cut -b3-
+	) > ${dest_dir}/etc/ca-certificates.conf
+}
+
+function post_install() {
+	usr/bin/update-ca-certificates --fresh
+
+}
