@@ -20,5 +20,5 @@ function build() {
 }
 
 function installpkg() {
-	cp . $dest_dir
+	cp -r . $dest_dir
 }
