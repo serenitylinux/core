@@ -22,12 +22,12 @@ function configure() {
 }
 
 function build() {
+	cd ../build
 	default
 }
 
 function installpkg() {
+	cd ../build
 	default
-	popd
-	popd
-	install -D -m644 COPYING ${dest_dir}/usr/share/licenses/${name}-${version}/LICENSE
+	install -D -m644 ${srcdir}/COPYING ${dest_dir}/usr/share/licenses/${name}-${version}/LICENSE
 }
