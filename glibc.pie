@@ -15,10 +15,9 @@ function configure() {
 	# needs this to build with make 4.0
 	sed -r -i 's/(3..89..)/\1 | 4.*/' ./configure
 
-	pushd ..
-	mkdir build
-	pushd build
-	../glibc-${version}/configure --prefix=/usr/ --disable-profile --libexecdir=/usr/lib/glibc
+	mkdir ../build
+	cd ../build
+	../${srcdir}/configure --prefix=/usr/ --disable-profile --libexecdir=/usr/lib/glibc
 }
 
 function build() {
@@ -29,5 +28,5 @@ function build() {
 function installpkg() {
 	cd ../build
 	default
-	install -D -m644 ${srcdir}/COPYING ${dest_dir}/usr/share/licenses/${name}-${version}/LICENSE
+	install -D -m644 ../${srcdir}/COPYING ${dest_dir}/usr/share/licenses/${name}-${version}/LICENSE
 }
