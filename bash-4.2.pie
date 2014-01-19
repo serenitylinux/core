@@ -30,5 +30,6 @@ function installpkg() {
 	default
 	ln -s bash ${dest_dir}/usr/bin/sh
 	ln -s bash ${dest_dir}/bin/bash
+	ln -s bash ${dest_dir}/bin/sh
 	install -dm755 ${dest_dir}/etc/skel/
 }
