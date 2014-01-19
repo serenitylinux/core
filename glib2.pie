@@ -1,0 +1,28 @@
+# vim: ft=sh
+name="glib2"
+version="2.38.2"
+desc="Common C routines used by GTK+ and other libs"
+url="http://www.gtk.org/"
+src="http://ftp.gnome.org/pub/GNOME/sources/glib/${version%.*}/glib-$version.tar.xz"
+bdeps="pkg-config pcre libffi"
+deps=""
+arch="any"
+flags=""
+srcdir="glib-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --libdir=/usr/lib \
+		--sysconfdir=/etc \
+		--with-pcre=system \
+		--disable-fam
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	rm -rf "${dest_dir}/usr/share/gdb/"
+}

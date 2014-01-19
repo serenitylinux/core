@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="libffi"
+version="3.0.13"
+desc="Portable, high level programming interface to various calling conventions"
+url="http://sourceware.org/libffi/"
+src="http://mirrors.kernel.org/sourceware/libffi/libffi-$version.tar.gz"
+bdeps="glibc"
+deps="glibc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --disable-static
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 LICENSE "${dest_dir}"/usr/share/licenses/$name/LICENSE
+}
