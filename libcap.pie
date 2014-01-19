@@ -1,0 +1,27 @@
+# vim: ft=sh
+name="libcap"
+version="2.24"
+desc="POSIX 1003.1e capabilities"
+url="http://sites.google.com/site/fullycapable/"
+src="http://mirror.clarkson.edu/linux/libs/security/linux-privs/libcap2/libcap-${version}.tar.xz"
+bdeps="glibc attr"
+deps="glibc attr"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	sed -i "/SBINDIR/s#sbin#bin#" Make.Rules
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make prefix=/usr lib=/lib DESTDIR=${dest_dir} RAISE_SETFCAP=no install
+  
+	install -Dm644 pam_cap/capability.conf \
+		${dest_dir}/usr/share/doc/$name/capability.conf.example
+}
