@@ -5,7 +5,7 @@ desc="Gnu Compiler Collection"
 url="http://gnu.org"
 src="http://mirror.clarkson.edu/gnu/gcc/gcc-$version/gcc-$version.tar.gz"
 #libmpfr-dev libmpc-dev libgmp-dev
-bdeps="gmp mpfr libmpc diffutils"
+bdeps="gmp mpfr libmpc diffutils gettext"
 deps="gmp mpfr libmpc linux-headers binutils diffutils"
 arch="any"
 flags=""
