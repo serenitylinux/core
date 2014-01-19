@@ -10,4 +10,4 @@ flags=""
 srcdir="$name"
 
 function configure() { none; }
-function build() { none; }
+function build() { default; }
