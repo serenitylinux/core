@@ -1,0 +1,32 @@
+# vim: ft=sh
+name="procps-ng"
+version="3.3.9"
+desc="Utilities for monitoring your system and its processes"
+url="http://sourceforge.net/projects/procps-ng/"
+src="http://downloads.sourceforge.net/project/${name}/Production/${name}-${version}.tar.xz"
+bdeps="ncurses"
+deps="ncurses"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure \
+		--prefix=/usr \
+		--exec-prefix=/ \
+		--sysconfdir=/etc \
+		--libdir=/usr/lib \
+		--bindir=/usr/bin \
+		--sbindir=/usr/bin 
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	rm "${dest_dir}/usr/bin/kill"
+	rm "${dest_dir}/usr/share/man/man1/kill.1"
+}
