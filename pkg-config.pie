@@ -4,15 +4,15 @@ version="0.28"
 desc="A system for managing library compile/link flags"
 url="http://pkgconfig.freedesktop.org/wiki/"
 src="http://pkgconfig.freedesktop.org/releases/${name}-${version}.tar.gz"
-bdeps="glib2"
-deps="glib2"
+bdeps=""
+deps=""
 arch="any"
 flags=""
 srcdir="$name-$version"
 
 
 function configure() {
-	default
+	./configure --prefix=/usr --with-internal-glib
 }
 
 function build() {
