@@ -1,0 +1,38 @@
+# vim: ft=sh
+name="shadow"
+version="4.1.5.1"
+desc="Password and account management tool suite with support for shadow files and PAM"
+url="http://pkg-shadow.alioth.debian.org/"
+src="http://ftp.archlinux.org/other/packages/$name/$name-$version.tar.bz2"
+bdeps="bash"
+deps="bash"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	export LIBS="-lcrypt"
+	
+./configure \
+    --prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libdir=/lib \
+    --mandir=/usr/share/man \
+    --sysconfdir=/etc \
+    --with-libpam \
+    --without-selinux \
+    --with-group-name-max-length=32
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+rm \
+      "$dest_dir"/usr/bin/{login,su,chsh,chfn,sg,nologin} \
+      "$dest_dir"/usr/sbin/{vipw,vigr}
+}
