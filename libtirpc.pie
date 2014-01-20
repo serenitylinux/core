@@ -4,7 +4,7 @@ version="0.2.4"
 desc="Transport Independent RPC library (SunRPC replacement)"
 url="http://libtirpc.sourceforge.net/"
 src="http://downloads.sourceforge.net/sourceforge/libtirpc/${name}-${version}.tar.bz2"
-bdeps="" #krb5
+bdeps=""
 deps=""
 arch="any"
 flags=""
@@ -12,7 +12,7 @@ srcdir="$name-$version"
 
 
 function configure() {
-	./configure --prefix=/usr --sysconf=/etc
+	./configure --prefix=/usr --sysconf=/etc --disable-gssapi --disable-ipv6
 }
 
 function build() {
