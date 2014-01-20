@@ -21,4 +21,7 @@ function build() {
 
 function installpkg() {
 	make install PREFIX=${dest_dir}
+	mkdir -p ${dest_dir}/usr/
+	cp -a ${dest_dir}/bin ${dest_dir}/usr/bin
+	rm -rf ${dest_dir}/bin
 }
