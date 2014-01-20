@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="flex"
+version="2.5.37"
+desc="A tool for generating text-scanning programs"
+url="http://flex.sourceforge.net"
+src="http://downloads.sourceforge.net/sourceforge/flex/flex-$version.tar.bz2"
+deps="glibc m4 bash"
+bdeps="$deps"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 COPYING ${dest_dir}/usr/share/licenses/$name/license.txt
+}

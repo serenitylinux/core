@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="db"
+version="5.3.28"
+desc="The Berkeley DB embedded database system"
+url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
+src="http://download.oracle.com/berkeley-db/db-${version}.tar.gz"
+bdeps="gcc bash"
+deps="gcc bash"
+arch="any"
+flags=""
+srcdir="$name-$version/build_unix"
+
+
+function configure() {
+	../dist/configure --prefix=/usr --enable-compat185 \
+		--enable-shared --enable-static --enable-cxx --enable-dbm
+}
+
+function build() {
+	make LIBSO_LIBS=-lpthread
+}
+
+function installpkg() {
+	default
+#	install -Dm644 "${srcdir}"/LICENSE "${dest_dir}"/usr/share/licenses/${name}/LICENSE
+}

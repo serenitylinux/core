@@ -1,0 +1,33 @@
+# vim: ft=sh
+name="pam"
+version="1.1.8"
+desc="PAM (Pluggable Authentication Modules) library"
+src="https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-$version.tar.bz2"
+url="http://www.kernel.org/pub/linux/libs/pam/"
+bdeps="glibc db flex"
+deps="glibc db cracklib" #libtirpc
+arch="any"
+flags=""
+srcdir="Linux-PAM-$version"
+
+
+function configure() {
+	./configure --libdir=/usr/lib --sbindir=/usr/bin
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make DESTDIR=${dest_dir} SCONFIGDIR=/etc/security install
+	sed -i 's|# End of file||' ${dest_dir}/etc/security/limits.conf
+	cat >>${dest_dir}/etc/security/limits.conf <<_EOT
+*               -       rtprio          0
+*               -       nice            0
+@audio          -       rtprio          65
+@audio          -       nice           -10
+@audio          -       memlock         40000
+_EOT
+	chmod +s ${dest_dir}/usr/bin/unix_chkpwd
+}
