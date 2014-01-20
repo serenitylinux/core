@@ -17,7 +17,7 @@ function configure() {
 
 	mkdir ../build
 	cd ../build
-	../${srcdir}/configure --prefix=/usr/ --disable-profile --libexecdir=/usr/lib/glibc
+	../${srcdir}/configure --prefix=/usr/ --disable-profile --libexecdir=/usr/lib/glibc --enable-obsolete-rpc
 }
 
 function build() {
