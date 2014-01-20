@@ -21,7 +21,7 @@ function configure() {
     --libdir=/lib \
     --mandir=/usr/share/man \
     --sysconfdir=/etc \
-    --with-libpam \
+    --without-libpam \
     --without-selinux \
     --with-group-name-max-length=32
 }
