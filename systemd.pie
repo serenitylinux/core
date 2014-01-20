@@ -4,7 +4,7 @@ version="208"
 desc=""
 src="http://www.freedesktop.org/software/systemd/systemd-208.tar.xz"
 url="http://www.freedesktop.org/wiki/Software/systemd"
-bdeps="intltool gperf libcap pkg-config dbus libffi"
+bdeps="intltool gperf libcap pkg-config dbus libffi pam"
 deps="$bdeps"
 arch="any"
 flags=""
@@ -31,4 +31,11 @@ function build() {
 
 function installpkg() {
 	default
+	cat > ${dest_dir}/etc/pam.d/other <<EOT
+#%PAM-1.0
+auth		required	pam_unix.so
+account		required	pam_unix.so
+password	required	pam_unix.so
+session		required	pam_unix.so
+EOT
 }
