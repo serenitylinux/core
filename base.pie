@@ -20,5 +20,7 @@ function build() {
 }
 
 function installpkg() {
-	cp -r $(ls --ignore .git) $dest_dir
+	cp -a $(ls --ignore .git) $dest_dir
+	mkdir $dest_dir/root
+	mkdir $dest_dir/tmp
 }
