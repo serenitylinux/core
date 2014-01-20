@@ -1,0 +1,27 @@
+# vim: ft=sh
+name="python2"
+version="2.7.6"
+desc="A high-level scripting language"
+url="http://www.python.org/"
+src="http://www.python.org/ftp/python/${version%rc?}/Python-${version}.tar.xz"
+bdeps="bzip2 gdbm openssl zlib expat libffi"
+deps="$bdeps"
+arch="any"
+flags=""
+srcdir="Python-$version"
+
+
+function configure() {
+./configure --prefix=/usr --enable-shared --with-threads --enable-ipv6 \
+              --enable-unicode=ucs4 --with-system-expat --with-system-ffi \
+              --with-dbmliborder=gdbm:ndbm
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make DESTDIR="${dest_dir}" altinstall maninstall
+	install -Dm644 LICENSE "${dest_dir}"/usr/share/licenses/${pkgname}/LICENSE
+}

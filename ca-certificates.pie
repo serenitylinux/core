@@ -4,7 +4,7 @@ version="20130906"
 desc="Common CA certificates"
 url="http://packages.qa.debian.org/c/ca-certificates.html"
 src="http://ftp.debian.org/debian/pool/main/c/${name}/${name}_${version}.tar.gz"
-bdeps="bash openssl findutils coreutils sed perl run-parts"
+bdeps="bash openssl findutils coreutils sed perl run-parts python2"
 deps="bash openssl findutils coreutils sed perl run-parts"
 arch="any"
 flags=""
@@ -12,7 +12,8 @@ srcdir="$name"
 
 
 function configure() {
-	none
+	sed 's|/usr/bin/python|/usr/bin/python2.7|g' -i mozilla/certdata2pem.py
+	sed 's|python|python2.7|g' -i mozilla/Makefile
 }
 
 function build() {
