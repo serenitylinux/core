@@ -8,7 +8,7 @@ bdeps="glibc zlib"
 deps="glibc zlib"
 arch="any"
 flags=""
-srcdir="$name-$version"
+srcdir="file-FILE5_16"
 
 
 function configure() {
