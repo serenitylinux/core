@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="gzip"
+iteration="1"
 version="1.6"
 desc="GNU compression utility"
 url="http://www.gnu.org/software/gzip/"

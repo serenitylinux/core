@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="linux-headers"
+iteration="1"
 version="3.12.4"
 desc="The Linux Kernel headers"
 url="http://kernel.org"

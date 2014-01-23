@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="file"
+iteration="1"
 version="5.16"
 desc="File type identification utility"
 url="http://www.darwinsys.com/file/"

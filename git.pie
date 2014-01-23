@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="git"
+iteration="1"
 version="1.8.5.1"
 desc="The fast distributed version control system"
 url="http://git-scm.com/"

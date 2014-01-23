@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="bash"
+iteration="1"
 version="4.2"
 desc="The GNU Bourne Again shell"
 url="http://www.gnu.org/software/bash/bash.html"

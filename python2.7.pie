@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="python2"
+iteration="1"
 version="2.7.6"
 desc="A high-level scripting language"
 url="http://www.python.org/"

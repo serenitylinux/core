@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="systemd"
+iteration="1"
 version="208"
 desc=""
 src="http://www.freedesktop.org/software/systemd/systemd-208.tar.xz"

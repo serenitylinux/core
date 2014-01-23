@@ -1,4 +1,5 @@
 name="spack"
+iteration="1"
 version="0.0.1"
 desc="Serenity PAckage Manager"
 url="http://www.serenitylinux.org/"

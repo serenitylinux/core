@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="libcap"
+iteration="1"
 version="2.24"
 desc="POSIX 1003.1e capabilities"
 url="http://sites.google.com/site/fullycapable/"

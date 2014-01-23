@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="gettext"
+iteration="1"
 version="0.18.3.1"
 desc="GNU internationalization library"
 url="http://www.gnu.org/software/gettext/"

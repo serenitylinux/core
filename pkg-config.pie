@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="pkg-config"
+iteration="1"
 version="0.28"
 desc="A system for managing library compile/link flags"
 url="http://pkgconfig.freedesktop.org/wiki/"

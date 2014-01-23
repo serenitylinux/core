@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="base"
+iteration="1"
 version="0.0.1"
 desc="Serenity Base"
 url="http://www.serenitylinux.org"

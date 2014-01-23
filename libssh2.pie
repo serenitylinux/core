@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="libssh2"
+iteration="1"
 version="1.4.3"
 desc="A library implementing the SSH2 protocol as defined by Internet Drafts"
 url="http://www.libssh2.org/"

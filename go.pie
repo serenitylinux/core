@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="go"
+iteration="1"
 version="1.2"
 desc="Compiler and tools for the Go programming language from Google"
 url="http://golang.org/"

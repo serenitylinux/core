@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="ca-certificates"
+iteration="1"
 version="20130906"
 desc="Common CA certificates"
 url="http://packages.qa.debian.org/c/ca-certificates.html"

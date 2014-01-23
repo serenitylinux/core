@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="curl"
+iteration="1"
 version="7.33.0"
 desc="An URL retrieval utility and library"
 url="http://curl.haxx.se"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="libffi"
+iteration="1"
 version="3.0.13"
 desc="Portable, high level programming interface to various calling conventions"
 url="http://sourceware.org/libffi/"

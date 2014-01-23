@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="coreutils"
+iteration="1"
 version="8.21"
 desc="The basic file, shell and text manipulation utilities of the GNU operating system"
 url="http://www.gnu.org/software/coreutils"

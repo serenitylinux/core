@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="pcre"
+iteration="1"
 version="8.33"
 desc="A library that implements Perl 5-style regular expressions"
 url="http://www.pcre.org/"

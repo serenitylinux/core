@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="run-parts"
+iteration="1"
 version="4.4"
 desc="run scripts or programs in a directory"
 url="http://packages.qa.debian.org/d/debianutils.html"

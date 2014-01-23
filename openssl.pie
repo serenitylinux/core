@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="openssl"
+iteration="1"
 version="1.0.1f"
 desc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security"
 url="https://www.openssl.org"

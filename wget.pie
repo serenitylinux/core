@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="wget"
+iteration="1"
 version="1.15"
 desc="A network utility to retrieve files from the Web"
 url="http://www.gnu.org/software/wget/"

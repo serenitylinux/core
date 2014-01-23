@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="m4"
+iteration="1"
 version="1.4.17"
 desc="The GNU macro processor"
 url="http://www.gnu.org/software/m4"

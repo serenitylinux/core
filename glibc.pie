@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="glibc"
+iteration="1"
 version="2.18"
 desc="GNU Standard C Library"
 url="http://www.zlib.net/"

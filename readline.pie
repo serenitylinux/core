@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="readline"
+iteration="1"
 version="6.2"
 desc="GNU readline library"
 url="http://tiswww.case.edu/php/chet/readline/rltop.html"

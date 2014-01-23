@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="util-linux"
+iteration="1"
 version="2.24"
 desc="Miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"

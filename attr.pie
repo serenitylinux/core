@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="attr"
+iteration="1"
 version="2.4.47"
 desc="Extended attribute support library for ACL support"
 url="http://savannah.nongnu.org/projects/attr"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="cracklib"
+iteration="1"
 version="2.9.0"
 desc="Password Checking Library"
 url="http://sourceforge.net/projects/cracklib"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="glib2"
+iteration="1"
 version="2.38.2"
 desc="Common C routines used by GTK+ and other libs"
 url="http://www.gtk.org/"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="procps-ng"
+iteration="1"
 version="3.3.9"
 desc="Utilities for monitoring your system and its processes"
 url="http://sourceforge.net/projects/procps-ng/"

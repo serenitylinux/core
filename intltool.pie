@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="intltool"
+iteration="1"
 version="0.50.2"
 desc="The internationalization tool collection"
 url="https://edge.launchpad.net/intltool"

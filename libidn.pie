@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="libidn"
+iteration="1"
 version="1.28"
 desc="Implementation of the Stringprep, Punycode and IDNA specifications"
 url="Implementation of the Stringprep, Punycode and IDNA specifications"

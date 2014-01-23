@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="bzip2"
+iteration="1"
 version="1.0.6"
 desc="A high-quality data compression program"
 url="http://sources.redhat.com/bzip2"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="expat"
+iteration="1"
 version="2.1.0"
 desc="An XML parser library"
 url="http://expat.sourceforge.net/"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="flex"
+iteration="1"
 version="2.5.37"
 desc="A tool for generating text-scanning programs"
 url="http://flex.sourceforge.net"

@@ -1,5 +1,6 @@
 # vim: ft=sh
 name="dbus"
+iteration="1"
 version="1.6.18"
 desc="Freedesktop.org message bus system"
 url="http://www.freedesktop.org/Software/dbus"
