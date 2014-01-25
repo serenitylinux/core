@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="iproute2"
+iteration="1"
+version="3.12.0"
+desc="IP Routing Utils"
+url="http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2"
+src="http://www.kernel.org/pub/linux/utils/net/$name/$name-$version.tar.xz"
+bdeps="linux-atm bison"
+deps="glibc iptables"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}

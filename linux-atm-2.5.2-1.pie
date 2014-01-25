@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="linux-atm"
+iteration="1"
+version="2.5.2"
+desc="Drivers and tools to support ATM networking under Linux."
+url="http://linux-atm.sourceforge.net/"
+src="http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.gz"
+bdeps="glibc flex"
+deps="glibc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}

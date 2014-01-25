@@ -1,0 +1,30 @@
+# vim: ft=sh
+name="iptables"
+iteration="1"
+version="1.4.21"
+desc="Linux kernel packet control tool"
+url="http://www.netfilter.org/projects/iptables/index.html"
+src="http://www.netfilter.org/projects/iptables/files/${name}-${version}.tar.bz2"
+bdeps="linux-headers"
+deps="glibc bash"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	rm include/linux/types.h
+	./configure --prefix=/usr \
+	     --libexecdir=/usr/lib/iptables --sysconfdir=/etc \
+	     --with-xtlibdir=/usr/lib/iptables \
+	     --enable-devel --enable-shared \
+	     --sbindir=/usr/bin
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}
