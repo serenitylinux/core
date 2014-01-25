@@ -33,8 +33,9 @@ function installpkg() {
 		INSTALLDIRS=vendor DESTDIR="$dest_dir" install
 	for i in $(ls $dest_dir/usr/lib/git-core/git-*); do
 		if $(diff $i $dest_dir/usr/lib/git-core/git); then
+			echo "Link $i"
 			rm $i
-			ln -s git $1
+			ln -s /usr/lib/git-core/git $1
 		fi
 	done
 }
