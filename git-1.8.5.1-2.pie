@@ -1,0 +1,34 @@
+# vim: ft=sh
+name="git"
+iteration="2"
+version="1.8.5.1"
+desc="The fast distributed version control system"
+url="http://git-scm.com/"
+src="http://git-core.googlecode.com/files/git-$version.tar.gz"
+bdeps="curl openssl pcre gettext perl expat"
+deps="curl openssl pcre expat"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+function configure() {
+	none
+}
+
+function build() {
+	make prefix=/usr gitexecdir=/usr/lib/git-core \
+		CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
+		USE_LIBPCRE=1 \
+		NO_CROSS_DIRECTORY_HARDLINKS=1 \
+		MAN_BOLD_LITERAL=1 \
+		all
+}
+
+function installpkg() {
+	make prefix=/usr gitexecdir=/usr/lib/git-core \
+		CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" \
+		USE_LIBPCRE=1 \
+		NO_CROSS_DIRECTORY_HARDLINKS=1 \
+		MAN_BOLD_LITERAL=1 \
+		INSTALLDIRS=vendor DESTDIR="$dest_dir" install
+}
