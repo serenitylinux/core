@@ -35,6 +35,7 @@ function installpkg() {
 		if $(diff $i $dest_dir/usr/lib/git-core/git); then
 			echo "Link $i"
 			rm $i
+			echo ln -s /usr/lib/git-core/git $1
 			ln -s /usr/lib/git-core/git $1
 		fi
 	done
