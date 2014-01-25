@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="links"
+iteration="1"
+version="2.8"
+desc="A text WWW browser, similar to Lynx"
+url="http://links.twibright.com/"
+src="http://links.twibright.com/download/${name}-${version}.tar.bz2"
+bdeps=""
+deps="bzip2 xz openssl"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --mandir=/usr/share/man --enable-javascript \
+		--disable-graphics --without-x  --without-fb
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}
