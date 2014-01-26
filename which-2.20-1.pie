@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="which"
+iteration="1"
+version="2.20"
+desc="Displays where a particular program in your path is located"
+url="http://carlo17.home.xs4all.nl/which/"
+src="http://www.xs4all.nl/~carlo17/which/${name}-${version}.tar.gz"
+bdeps=""
+deps=""
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}
