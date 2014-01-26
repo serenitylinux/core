@@ -1,0 +1,36 @@
+# vim: ft=sh
+name="llvm"
+iteration="1"
+version="3.4"
+url="http://llvm.org/"
+src="http://llvm.org/releases/$version/llvm-$version.src.tar.gz"
+desc="Low Level Virtual Machine"
+bdeps="libffi python2"
+deps="perl"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+  CC=gcc CXX=g++ \
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --enable-shared \
+    --enable-libffi \
+    --enable-targets=all \
+    --disable-expensive-checks \
+    --disable-debug-runtime \
+    --disable-assertions \
+    --with-binutils-include=/usr/include \
+    --with-python=/usr/bin/python2.7 
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}

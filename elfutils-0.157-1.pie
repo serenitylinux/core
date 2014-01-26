@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="elfutils"
+iteration="1"
+version="0.157"
+desc="Libraries and utilities to handle ELF object files and DWARF debugging information"
+url="https://fedorahosted.org/elfutils/"
+src="https://fedorahosted.org/releases/e/l/elfutils/${version}/elfutils-${version}.tar.bz2"
+deps="zlib bzip2 xz"
+bdeps="$bdeps gcc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --program-prefix="eu-"
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	rm "${dest_dir}"/usr/lib/lib{asm,dw,elf}.a
+}

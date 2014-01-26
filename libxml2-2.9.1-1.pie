@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="libxml2"
+iteration="1"
+version="2.9.1"
+desc="XML parsing library, version 2"
+url="http://www.xmlsoft.org/"
+src="ftp://ftp.xmlsoft.org/${name}/${name}-${version}.tar.gz" #todo support ftp
+deps="zlib readline ncurses xz"
+bdeps="$deps python2"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --with-threads --with-history --with-python=/usr/bin/python2.7
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 COPYING "${dest_dir}/usr/share/licenses/${name}/COPYING"
+}
