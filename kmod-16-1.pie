@@ -1,0 +1,31 @@
+# vim: ft=sh
+name="kmod"
+iteration="1"
+version="16"
+desc="Linux kernel module handling"
+url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
+src="http://mirror.clarkson.edu/linux/utils/kernel/$name/$name-$version.tar.xz"
+bdeps="glibc" #zlib
+deps="$bdeps"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure \
+		--sysconfdir=/etc --disable-manpages 
+		#--with-zlib
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -dm755 "$destdir"/{etc,usr/lib}/{depmod,modprobe}.d
+	for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
+		ln -s kmod "$destdir/usr/bin/$tool"
+	done
+}
