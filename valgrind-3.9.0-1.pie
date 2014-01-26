@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="valgrind"
+iteration="1"
+version="3.9.0"
+desc="A tool to help find memory-management problems in programs"
+url="http://valgrind.org/"
+src="http://valgrind.org/downloads/${name}-${version}.tar.bz2"
+deps="glibc perl"
+bdeps="$deps gdb"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	#TODO multiarch
+	./configure --prefix=/usr --mandir=/usr/share/man --enable-only64bit
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}
