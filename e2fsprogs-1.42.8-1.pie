@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="e2fsprogs"
+iteration="1"
+version="1.42.8"
+desc="Ext2/3/4 filesystem utilities"
+url="http://e2fsprogs.sourceforge.net"
+src="http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.gz"
+deps="bash util-linux"
+bdeps="$deps bc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make DESTDIR="${dest_dir}" install install-libs
+}
