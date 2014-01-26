@@ -1,0 +1,37 @@
+# vim: ft=sh
+name="iputils"
+iteration="1"
+version="20121221"
+desc="Network monitoring tools"
+url="http://www.skbuff.net/iputils/"
+src="http://www.skbuff.net/$name/$name-s$version.tar.bz2"
+bdeps=""
+deps="openssl libcap"
+arch="any"
+flags=""
+srcdir="$name-s$version"
+
+
+function configure() {
+	none
+}
+
+function build() {
+	make USE_GNUTLS=no CCOPTOPT="$CFLAGS"
+}
+
+function installpkg() {
+	install -dm755 "${dest_dir}"/usr/bin
+
+	install -m755 arping clockdiff rarpd rdisc tftpd tracepath tracepath6 "${dest_dir}"/usr/bin/
+
+	install -m755 ping{,6} "${dest_dir}"/usr/bin/
+
+	install -dm755 "${dest_dir}"/usr/share/man/man8
+#	install -m644 doc/{arping,clockdiff,ping,rarpd,rdisc,tftpd,tracepath}.8 \
+#	   "${dest_dir}"/usr/share/man/man8/
+
+#	cd "${dest_dir}"/usr/share/man/man8
+#	ln -sf ping.8.gz  ping6.8.gz
+#	ln -sf tracepath.8.gz tracepath6.8.gz
+}
