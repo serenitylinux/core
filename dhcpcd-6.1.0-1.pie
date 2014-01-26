@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="dhcpcd"
+iteration="1"
+version="6.1.0"
+desc="RFC2131 compliant DHCP client daemon"
+url="http://roy.marples.name/projects/dhcpcd/"
+src="http://roy.marples.name/downloads/$name/$name-$version.tar.bz2"
+bdeps="glibc bash"
+deps="glibc bash"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+  	install -d $dest_dir/usr/share/licenses/$name
+}
