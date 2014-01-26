@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="mtdev"
+iteration="1"
+version="1.1.4"
+desc="A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol"
+url="http://bitmath.org/code/mtdev/"
+src="http://bitmath.org/code/mtdev/$name-$version.tar.bz2"
+bdeps="glibc"
+deps="glibc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 COPYING "$dest_dir/usr/share/licenses/$name/LICENSE"
+}
