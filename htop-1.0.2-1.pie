@@ -1,0 +1,30 @@
+# vim: ft=sh
+name="htop"
+iteration="1"
+version="1.0.2"
+desc="Interactive process viewer"
+url="http://htop.sourceforge.net/"
+src="http://downloads.sourceforge.net/$name/$name-$version.tar.gz"
+bdeps="ncurses python2"
+deps="ncurses"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure \
+	      --prefix=/usr \
+	      --enable-unicode \
+	      --enable-openvz \
+	      --enable-vserver \
+	      --enable-cgroup
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}
