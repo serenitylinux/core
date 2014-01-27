@@ -1,0 +1,34 @@
+# vim: ft=sh
+name="tzdata"
+iteration="1"
+version="2013i"
+desc="Sources for time zone and daylight saving time data"
+url="http://www.iana.org/time-zones"
+src="http://www.iana.org/time-zones/repository/releases/${name}${version}.tar.gz"
+bdeps="glibc"
+deps=""
+arch="any"
+flags=""
+srcdir=""
+
+timezones=('africa' 'antarctica' 'asia' 'australasia'
+           'europe' 'northamerica' 'southamerica'
+           'pacificnew' 'etcetera' 'backward'
+           'systemv' 'factory')
+
+function configure() {
+	none
+}
+
+function build() {
+	none
+}
+
+function installpkg() {
+	zic -y ./yearistype -d ${dest_dir}/usr/share/zoneinfo ${timezones[@]}
+	zic -y ./yearistype -d ${dest_dir}/usr/share/zoneinfo/posix ${timezones[@]}
+	zic -y ./yearistype -d ${dest_dir}/usr/share/zoneinfo/right -L leapseconds ${timezones[@]}
+
+	zic -y ./yearistype -d ${dest_dir}/usr/share/zoneinfo -p America/New_York
+	install -m444 -t ${dest_dir}/usr/share/zoneinfo iso3166.tab zone.tab	
+}
