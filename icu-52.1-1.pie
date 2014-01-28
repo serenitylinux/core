@@ -1,0 +1,29 @@
+# vim: ft=sh
+name="icu"
+iteration="1"
+version="52.1"
+desc="International Components for Unicode library"
+url="http://www.icu-project.org/"
+src="http://download.icu-project.org/files/${name}4c/${version}/${name}4c-${version//./_}-src.tgz"
+bdeps=""
+deps="gcc"
+arch="any"
+flags=""
+srcdir="icu/source"
+
+
+function configure() {
+./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--sbindir=/usr/bin
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 ../license.html ${dest_dir}/usr/share/licenses/icu/license.html
+}

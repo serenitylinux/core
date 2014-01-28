@@ -1,0 +1,32 @@
+# vim: ft=sh
+name="libjpeg"
+iteration="1"
+version="1.3.0"
+desc="JPEG image codec with accelerated baseline compression and decompression"
+url="http://libjpeg-turbo.virtualgl.org/"
+src="http://downloads.sourceforge.net/project/${name}-turbo/${version}/${name}-turbo-${version}.tar.gz"
+bdeps="nasm"
+deps=""
+arch="any"
+flags=""
+srcdir="$name-turbo-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --with-jpeg8 --mandir=/usr/share/man
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make \
+		DESTDIR="${dest_dir}" \
+		docdir="/usr/share/doc/${name}" \
+		exampledir="/usr/share/doc/${name}" \
+		install
+	install -d "${dest_dir}/usr/share/licenses/libjpeg-turbo"
+	ln -t "${dest_dir}/usr/share/licenses/libjpeg-turbo" -s ../../doc/libjpeg-turbo/README{,-turbo.txt}
+	install -m644 jpegint.h "${dest_dir}/usr/include" # required by other software
+}

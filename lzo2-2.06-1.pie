@@ -1,0 +1,32 @@
+# vim: ft=sh
+name="lzo2"
+iteration="1"
+version="2.06"
+desc="Portable lossless data compression library"
+url="http://www.oberhumer.com/opensource/lzo"
+src="http://www.oberhumer.com/opensource/lzo/download/lzo-${version}.tar.gz"
+bdeps=""
+deps="glibc"
+arch="any"
+flags=""
+srcdir="lzo-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --enable-shared
+}
+
+function build() {
+	default
+	gcc $CFLAGS -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minilzo.c
+	gcc $LDFLAGS -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
+}
+
+function installpkg() {
+	default
+	# install minilzo
+	install -m 755 libminilzo.so.0 ${dest_dir}/usr/lib
+	install -p -m 644 minilzo/minilzo.h ${dest_dir}/usr/include/lzo
+	cd ${dest_dir}/usr/lib
+	ln -s libminilzo.so.0 libminilzo.so
+}

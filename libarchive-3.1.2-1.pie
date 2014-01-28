@@ -1,0 +1,26 @@
+# vim: ft=sh
+name="libarchive"
+iteration="1"
+version="3.1.2"
+desc="Library that can create and read several streaming archive formats"
+url="http://libarchive.org/"
+src="http://libarchive.org/downloads/$name-$version.tar.gz"
+bdeps="acl attr bzip2 expat lzo2 openssl xz zlib "
+deps="$bdeps"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --without-xml2
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -D -m644 COPYING "$dest_dir"/usr/share/licenses/libarchive/COPYING
+}

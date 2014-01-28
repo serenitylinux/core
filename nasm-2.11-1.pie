@@ -1,0 +1,28 @@
+# vim: ft=sh
+name="nasm"
+iteration="1"
+version="2.11"
+desc="An 80x86 assembler designed for portability and modularity"
+url="http://www.nasm.us"
+src="http://www.nasm.us/pub/nasm/releasebuilds/${version}/${name}-${version}.tar.xz"
+bdeps=""
+deps="glibc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	  make INSTALLROOT="${dest_dir}" install install_rdf
+	  install -dm755 "${dest_dir}"/usr/share/info
+#	  install -m644 doc/info/* "${dest_dir}"/usr/share/info/
+	  install -D -m644 LICENSE "${dest_dir}"/usr/share/licenses/nasm/LICENSE
+}
