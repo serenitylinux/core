@@ -1,0 +1,33 @@
+# vim: ft=sh
+name="nspr"
+iteration="1"
+version="4.10.2"
+desc="Netscape Portable Runtime"
+url="http://www.mozilla.org/projects/nspr"
+src="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz"
+bdeps="" #zip
+deps="glibc"
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./nspr/configure \
+		--prefix=/usr \
+		--libdir=/usr/lib \
+		--includedir=/usr/include/nspr \
+		--enable-optimize \
+		--disable-debug --enable-64bit
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	ln -s nspr.pc $dest_dir/usr/lib/pkgconfig/mozilla-nspr.pc
+	rm -rf $dest_dir/usr/bin/{compile-et.pl,prerr.properties} \
+		$dest_dir/usr/include/nspr/md 
+}

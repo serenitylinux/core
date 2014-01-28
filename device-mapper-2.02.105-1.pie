@@ -1,0 +1,30 @@
+# vim: ft=sh
+name="device-mapper"
+iteration="1"
+version="2.02.105"
+desc="Device Mapper libs and tools"
+url="http://sourceware.org/dm"
+src="ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz"
+bdeps="systemd"
+deps=""
+arch="any"
+flags=""
+srcdir="LVM2.$version"
+
+
+function configure() {
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin \
+    --with-udev-prefix=/usr --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --with-default-pid-dir=/run --with-default-dm-run-dir=/run --with-default-run-dir=/run/lvm \
+    --enable-pkgconfig --enable-readline --enable-dmeventd --enable-cmdlib --enable-applib \
+    --enable-udev_sync --enable-udev_rules --with-default-locking-dir=/run/lock/lvm \
+    --with-thin=internal
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make DESTDIR="${dest_dir}" install_device-mapper
+}

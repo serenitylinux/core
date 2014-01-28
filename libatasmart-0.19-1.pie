@@ -1,0 +1,29 @@
+# vim: ft=sh
+name="libatasmart"
+iteration="1"
+version="0.19"
+desc="ATA SMART library"
+url="http://0pointer.de/blog/projects/being-smart.html"
+src="http://0pointer.de/public/$name-$version.tar.xz"
+bdeps=""
+deps=""
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--disable-static
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}

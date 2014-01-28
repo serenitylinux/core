@@ -1,0 +1,31 @@
+# vim: ft=sh
+name="mozjs"
+iteration="1"
+version="17.0.0"
+desc="JS interperter and libs"
+url="https://developer.mozilla.org/En/SpiderMonkey/17"
+src="http://ftp.mozilla.org/pub/mozilla.org/js/${name}${version}.tar.gz"
+deps="libffi readline nspr"
+bdeps="$deps python2 readline"
+arch="any"
+flags=""
+srcdir="$name$version/js/src"
+
+
+function configure() {
+	export PYTHON=/usr/bin/python2.7
+	./configure \
+		--prefix=/usr \
+		--with-system-ffi \
+		--enable-threadsafe	
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	find $dest_dir/usr/{lib/pkgconfig,include} -type f -exec chmod +x {} +
+}
