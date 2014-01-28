@@ -17,13 +17,22 @@ function configure() {
 }
 
 function build() {
-	default
+	make -f Makefile-libbz2_so
+	make bzip2 bzip2recover
 }
 
 function installpkg() {
 	make install PREFIX=${dest_dir}
 	install -dm755 ${dest_dir}/usr/
+	install -dm755 $dest_dir/usr/{bin,lib,include,share/man/man1}
+
 	mv ${dest_dir}/include ${dest_dir}/usr/
 	mv ${dest_dir}/bin ${dest_dir}/usr/
 	rm ${dest_dir}/lib/libbz2.a
+
+	install -m644 bzlib.h $dest_dir/usr/include/
+	install -m755 libbz2.so.1.0.6 $dest_dir/usr/lib
+	ln -s libbz2.so.1.0.6 $dest_dir/usr/lib/libbz2.so
+	ln -s libbz2.so.1.0.6 $dest_dir/usr/lib/libbz2.so.1
+	ln -s libbz2.so.1.0.6 $dest_dir/usr/lib/libbz2.so.1.0
 }
