@@ -1,0 +1,28 @@
+# vim: ft=sh
+name="rsync"
+iteration="1"
+version="3.1.0"
+desc="A file transfer program to keep remote files in sync"
+url="http://samba.anu.edu.au/rsync/"
+src="http://rsync.samba.org/ftp/rsync/$name-$version.tar.gz"
+bdeps=""
+deps=""
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr \
+		--with-included-popt=yes \
+		--with-included-zlib=no \
+		--disable-debug
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+}
