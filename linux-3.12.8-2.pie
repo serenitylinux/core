@@ -1,0 +1,31 @@
+# vim: ft=sh
+name="linux"
+iteration="1"
+version="3.12.8"
+desc="The Linux Kernel"
+url="http://www.kernel.org/"
+src="http://mirror.clarkson.edu/linux/kernel/v3.x/$name-$version.tar.gz"
+bdeps="gcc ncurses curl"
+deps=""
+arch="any"
+flags=""
+srcdir="$name-$version"
+
+
+function configure() {
+	curl -k "http://mirror.clarkson.edu/serenity/misc/$name-config-$version-$iteration.txt" -o .config 
+}
+
+function build() {
+	make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+}
+
+function installpkg() {
+	make INSTALL_MOD_PATH=${dest_dir} modules_install
+	install -d -m0755 ${dest_dir}/boot
+	install -m0755 arch/x86_64/boot/bzImage ${dest_dir}/boot/$name-$version-$iteration 
+}
+
+function post_install() {
+	depmod $version 
+}
