@@ -1,0 +1,25 @@
+# vim: ft=sh
+name="base"
+iteration="1"
+version="0.1"
+desc="Serenity Core Packages"
+url="http://serenitylinux.org"
+src=""
+bdeps="base-files"
+deps="spack systemd base-files linux"
+arch="any"
+flags=""
+srcdir=""
+
+
+function configure() {
+	none
+}
+
+function build() {
+	none
+}
+
+function installpkg() {
+	none
+}
