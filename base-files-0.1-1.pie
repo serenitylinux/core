@@ -9,7 +9,7 @@ bdeps=""
 deps=""
 arch="any"
 flags=""
-srcdir="$name"
+srcdir="base"
 
 
 function configure() {
