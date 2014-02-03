@@ -1,0 +1,97 @@
+# vim: ft=sh
+name="go"
+iteration="2"
+version="1.2"
+desc="Compiler and tools for the Go programming language from Google"
+url="http://golang.org/"
+src="http://go.googlecode.com/files/${name}$version.linux-amd64.tar.gz"
+bdeps="perl gawk bash ca-certificates curl inetutils"
+deps="ca-certificates"
+arch="any"
+flags=""
+srcdir="$name/src"
+
+export GOROOT_FINAL=/usr/lib/go
+export GOROOT="$srcdir"
+#export PATH="$srcdir/bin:$PATH"
+
+function configure() {
+	curl -k "https://git.gnome.org/browse/gtksourceview/plain/data/language-specs/go.lang" -o go.lang
+}
+
+function build() {
+	export GO386=387
+
+	export GOOS=linux
+	export GOARCH=arm #enable arm
+	
+	bash make.bash
+
+	for os in linux; do # darwin freebsd windows; do
+		for arch in amd64 386; do
+			export GOOS="$os"
+			export GOARCH="$arch"
+			bash make.bash --no-clean
+		done
+	done
+}
+
+function installpkg() {
+	cd ..
+	install -Dm644 src/go.lang ${dest_dir}/usr/share/gtksourceview-2.0/language-specs/go.lang	
+	install -Dm644 LICENSE "${dest_dir}/usr/share/licenses/go/LICENSE"
+	install -Dm644 misc/bash/go "${dest_dir}/usr/share/bash-completion/completions/go"
+	install -Dm644 misc/emacs/go-mode-load.el "${dest_dir}/usr/share/emacs/site-lisp/go-mode-load.el"
+	install -Dm644 misc/emacs/go-mode.el "${dest_dir}/usr/share/emacs/site-lisp/go-mode.el"
+	install -Dm644 misc/zsh/go "${dest_dir}/usr/share/zsh/site-functions/_go"
+
+	for f in ftdetect/gofiletype.vim autoload/go/complete.vim indent/go.vim \
+		ftplugin/go/fmt.vim ftplugin/go/import.vim syntax/go.vim syntax/godoc.vim \
+		plugin/godoc.vim;
+	do
+		install -Dm644 "misc/vim/$f" "${dest_dir}/usr/share/vim/vimfiles/$f"
+	done
+
+	mkdir -p "${dest_dir}/"{etc/profile.d,usr/{share/go,lib/go,lib/go/src,lib/go/site/src}}
+
+	cp -r doc misc -t "${dest_dir}/usr/share/go"
+	ln -s /usr/share/go/doc "${dest_dir}/usr/lib/go/doc"
+	cp -a bin "${dest_dir}/usr"
+	cp -a pkg "${dest_dir}/usr/lib/go"
+	cp -a "src/pkg" "${dest_dir}/usr/lib/go/src/"
+	cp -a "src/cmd" "${dest_dir}/usr/lib/go/src/cmd"
+	cp -a "src/lib9" "${dest_dir}/usr/lib/go/src/"
+	cp -a "lib" "${dest_dir}/usr/lib/go/"
+	cp -a "include" "${dest_dir}/usr/lib/go/"
+
+	install -Dm644 src/Make.* "${dest_dir}/usr/lib/go/src"
+
+	# Remove object files from target src dir
+	find "${dest_dir}/usr/lib/go/src/" -type f -name '*.[ao]' -delete
+
+	# Fix for FS#32813
+	find "${dest_dir}" -type f -name sql.go -exec chmod -x {} \;
+	
+	# Remove all executable source files
+	find "${dest_dir}/usr/lib/go/src/pkg" -type f -executable -delete
+
+	# Headers for C modules
+	install -Dm644 src/pkg/runtime/runtime.h "${dest_dir}/usr/lib/go/src/pkg/runtime/runtime.h"
+	install -Dm644 src/pkg/runtime/cgocall.h "${dest_dir}/usr/lib/go/src/pkg/runtime/cgocall.h"
+
+	# For packages that source /etc/profile.d/go.sh TODO
+#	install -Dm755 "$srcdir/$pkgname.sh" "${dest_dir}/etc/profile.d/$pkgname.sh"
+
+	# This is to make go get code.google.com/p/go-tour/gotour and
+	# then running the gotour executable work out of the box.
+	ln -sf /usr/bin "${dest_dir}/usr/lib/go/bin"
+
+	# For godoc
+	install -Dm644 favicon.ico "${dest_dir}/usr/lib/go/favicon.ico"
+
+	rm -f "${dest_dir}/usr/share/go/doc/articles/wiki/get.bin"
+
+	install -Dm644 VERSION "${dest_dir}/usr/lib/go/VERSION"
+
+	find "${dest_dir}/usr/"{lib/go/pkg,bin} -type f -exec touch '{}' +	
+}
