@@ -1,6 +1,6 @@
 # vim: ft=sh
 name="linux"
-iteration="1"
+iteration="2"
 version="3.12.8"
 desc="The Linux Kernel"
 url="http://www.kernel.org/"
