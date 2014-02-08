@@ -32,6 +32,6 @@ function installpkg() {
 }
 
 function post_install() {
-	usr/bin/update-ca-certificates --fresh
+	/usr/bin/update-ca-certificates --fresh
 
 }
