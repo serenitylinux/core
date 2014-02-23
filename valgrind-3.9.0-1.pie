@@ -4,11 +4,11 @@ iteration="1"
 version="3.9.0"
 desc="A tool to help find memory-management problems in programs"
 url="http://valgrind.org/"
-src="http://valgrind.org/downloads/${name}-${version}.tar.bz2"
-deps="glibc perl"
-bdeps="$deps gdb"
-arch="any"
-flags=""
+src=('http://valgrind.org/downloads/valgrind-3.9.0.tar.bz2')
+deps=('glibc' 'perl')
+bdeps=('glibc' 'perl' 'gdb')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

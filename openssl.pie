@@ -4,11 +4,11 @@ iteration="1"
 version="1.0.1f"
 desc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security"
 url="https://www.openssl.org"
-src="http://www.openssl.org/source/$name-$version.tar.gz"
-bdeps="perl"
-deps=""
-arch="any"
-flags=""
+src=('http://www.openssl.org/source/openssl-1.0.1f.tar.gz')
+bdeps=('perl')
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 export MAKEFLAGS="-j1"

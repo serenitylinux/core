@@ -4,11 +4,11 @@ iteration="1"
 version="3.1.2"
 desc="Multiple-precision floating-point library"
 url="http://www.mpfr.org/"
-src="http://www.mpfr.org/mpfr-current/mpfr-${version}.tar.xz"
-bdeps="gmp"
-deps="gmp"
-arch="any"
-flags=""
+src=('http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz')
+bdeps=('gmp')
+deps=('gmp')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

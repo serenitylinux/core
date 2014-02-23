@@ -4,11 +4,11 @@ iteration="1"
 version="2.20"
 desc="Displays where a particular program in your path is located"
 url="http://carlo17.home.xs4all.nl/which/"
-src="http://www.xs4all.nl/~carlo17/which/${name}-${version}.tar.gz"
-bdeps=""
-deps=""
-arch="any"
-flags=""
+src=('http://www.xs4all.nl/~carlo17/which/which-2.20.tar.gz')
+bdeps=()
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

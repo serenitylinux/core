@@ -4,11 +4,11 @@ iteration="1"
 version="8.33"
 desc="A library that implements Perl 5-style regular expressions"
 url="http://www.pcre.org/"
-src="http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/${name}-${version}.tar.gz"
-bdeps=""
-deps=""
-arch="any"
-flags=""
+src=('http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.33.tar.gz')
+bdeps=()
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

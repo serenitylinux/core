@@ -4,11 +4,11 @@ iteration="1"
 version="0.28"
 desc="A system for managing library compile/link flags"
 url="http://pkgconfig.freedesktop.org/wiki/"
-src="http://pkgconfig.freedesktop.org/releases/${name}-${version}.tar.gz"
-bdeps=""
-deps=""
-arch="any"
-flags=""
+src=('http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz')
+bdeps=()
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

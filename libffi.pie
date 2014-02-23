@@ -4,11 +4,11 @@ iteration="1"
 version="3.0.13"
 desc="Portable, high level programming interface to various calling conventions"
 url="http://sourceware.org/libffi/"
-src="http://mirrors.kernel.org/sourceware/libffi/libffi-$version.tar.gz"
-bdeps="glibc"
-deps="glibc"
-arch="any"
-flags=""
+src=('http://mirrors.kernel.org/sourceware/libffi/libffi-3.0.13.tar.gz')
+bdeps=('glibc')
+deps=('glibc')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

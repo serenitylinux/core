@@ -4,11 +4,11 @@ iteration="1"
 version="20121221"
 desc="Network monitoring tools"
 url="http://www.skbuff.net/iputils/"
-src="http://www.skbuff.net/$name/$name-s$version.tar.bz2"
-bdeps=""
-deps="openssl libcap"
-arch="any"
-flags=""
+src=('http://www.skbuff.net/iputils/iputils-s20121221.tar.bz2')
+bdeps=()
+deps=('openssl' 'libcap')
+arch=('any')
+flags=()
 srcdir="$name-s$version"
 
 

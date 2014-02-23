@@ -4,11 +4,11 @@ iteration="1"
 version="1.2"
 desc="Compiler and tools for the Go programming language from Google"
 url="http://golang.org/"
-src="http://go.googlecode.com/files/${name}$version.linux-amd64.tar.gz"
+src=('http://go.googlecode.com/files/go1.2.linux-amd64.tar.gz')
 bdeps="perl gawk bash ca-certificates" #inetutils
 deps="ca-certificates"
-arch="any"
-flags=""
+arch=('any')
+flags=()
 srcdir="$name/src"
 
 export GOROOT_FINAL=/usr/lib/go

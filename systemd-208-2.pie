@@ -3,12 +3,12 @@ name="systemd"
 iteration="2"
 version="208"
 desc=""
-src="http://www.freedesktop.org/software/systemd/systemd-208.tar.xz"
+src=('http://www.freedesktop.org/software/systemd/systemd-208.tar.xz')
 url="http://www.freedesktop.org/wiki/Software/systemd"
-bdeps="intltool gperf libcap pkg-config dbus libffi pam glib2 libgcrypt kmod"
-deps="$bdeps"
-arch="any"
-flags=""
+bdeps=('intltool' 'gperf' 'libcap' 'pkg-config' 'dbus' 'libffi' 'pam' 'glib2' 'libgcrypt' 'kmod')
+deps=('intltool' 'gperf' 'libcap' 'pkg-config' 'dbus' 'libffi' 'pam' 'glib2' 'libgcrypt' 'kmod')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

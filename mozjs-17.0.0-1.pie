@@ -4,11 +4,11 @@ iteration="1"
 version="17.0.0"
 desc="JS interperter and libs"
 url="https://developer.mozilla.org/En/SpiderMonkey/17"
-src="http://ftp.mozilla.org/pub/mozilla.org/js/${name}${version}.tar.gz"
-deps="libffi readline nspr"
-bdeps="$deps python2 readline"
-arch="any"
-flags=""
+src=('http://ftp.mozilla.org/pub/mozilla.org/js/mozjs17.0.0.tar.gz')
+deps=('libffi' 'readline' 'nspr')
+bdeps=('libffi' 'readline' 'nspr' 'python2' 'readline')
+arch=('any')
+flags=()
 srcdir="$name$version/js/src"
 
 

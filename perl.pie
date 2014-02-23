@@ -4,10 +4,10 @@ iteration="1"
 version="5.18.1"
 desc="A highly capable, feature-rich programming language"
 url="http://www.perl.org"
-src="http://www.cpan.org/src/5.0/perl-$version.tar.gz"
-bdeps="gdbm coreutils glibc bash"
-deps="gdbm coreutils glibc bash"
-arch="any"
+src=('http://www.cpan.org/src/5.0/perl-5.18.1.tar.gz')
+bdeps=('gdbm' 'coreutils' 'glibc' 'bash')
+deps=('gdbm' 'coreutils' 'glibc' 'bash')
+arch=('any')
 flags=""
 srcdir="$name-$version"
 

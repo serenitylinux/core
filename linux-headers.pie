@@ -4,11 +4,11 @@ iteration="1"
 version="3.12.4"
 desc="The Linux Kernel headers"
 url="http://kernel.org"
-src="http://mirror.clarkson.edu/linux/kernel/v3.0/linux-$version.tar.gz"
-bdeps=""
-deps=""
-arch="any"
-flags=""
+src=('http://mirror.clarkson.edu/linux/kernel/v3.0/linux-3.12.4.tar.gz')
+bdeps=()
+deps=()
+arch=('any')
+flags=()
 srcdir="linux-$version"
 
 

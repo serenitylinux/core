@@ -4,11 +4,11 @@ iteration="1"
 version="1.1.4"
 desc="A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol"
 url="http://bitmath.org/code/mtdev/"
-src="http://bitmath.org/code/mtdev/$name-$version.tar.bz2"
-bdeps="glibc"
-deps="glibc"
-arch="any"
-flags=""
+src=('http://bitmath.org/code/mtdev/mtdev-1.1.4.tar.bz2')
+bdeps=('glibc')
+deps=('glibc')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

@@ -4,11 +4,11 @@ iteration="1"
 version="2.8.12.1"
 desc="A cross-platform open-source make system"
 url="http://www.cmake.org/"
-src="http://www.cmake.org/files/v2.8/${name}-${version}.tar.gz"
-bdeps="libarchive"
-deps="curl libarchive"
-arch="any"
-flags=""
+src=('http://www.cmake.org/files/v2.8/cmake-2.8.12.1.tar.gz')
+bdeps=('libarchive')
+deps=('curl' 'libarchive')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

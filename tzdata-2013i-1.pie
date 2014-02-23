@@ -4,11 +4,11 @@ iteration="1"
 version="2013i"
 desc="Sources for time zone and daylight saving time data"
 url="http://www.iana.org/time-zones"
-src="http://www.iana.org/time-zones/repository/releases/${name}${version}.tar.gz"
-bdeps="glibc"
-deps=""
-arch="any"
-flags=""
+src=('http://www.iana.org/time-zones/repository/releases/tzdata2013i.tar.gz')
+bdeps=('glibc')
+deps=()
+arch=('any')
+flags=()
 srcdir=""
 
 timezones=('africa' 'antarctica' 'asia' 'australasia'

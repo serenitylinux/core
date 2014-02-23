@@ -4,11 +4,11 @@ iteration="1"
 version="2.20"
 desc="Simple xml parser for perl"
 url="http://search.cpan.org/dist/XML-Simple"
-src="http://search.cpan.org/CPAN//authors/id/G/GR/GRANTM/XML-Simple-$version.tar.gz"
-bdeps="perl-xml-parser perl"
-deps="$bdeps"
-arch="any"
-flags=""
+src=('http://search.cpan.org/CPAN//authors/id/G/GR/GRANTM/XML-Simple-2.20.tar.gz')
+bdeps=('perl-xml-parser' 'perl')
+deps=('perl-xml-parser' 'perl')
+arch=('any')
+flags=()
 srcdir="XML-Simple-$version"
 
 

@@ -4,11 +4,11 @@ iteration="1"
 version="2.11"
 desc="An 80x86 assembler designed for portability and modularity"
 url="http://www.nasm.us"
-src="http://www.nasm.us/pub/nasm/releasebuilds/${version}/${name}-${version}.tar.xz"
-bdeps=""
-deps="glibc"
-arch="any"
-flags=""
+src=('http://www.nasm.us/pub/nasm/releasebuilds/2.11/nasm-2.11.tar.xz')
+bdeps=()
+deps=('glibc')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

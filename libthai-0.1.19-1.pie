@@ -4,11 +4,11 @@ iteration="1"
 version="0.1.19"
 desc="Thai language support routines"
 url="http://linux.thai.net/projects/libthai"
-src="http://linux.thai.net/pub/thailinux/software/${name}/${name}-${version}.tar.xz"
-bdeps="pkg-config libdatrie"
-deps="libdatrie"
-arch="any"
-flags=""
+src=('http://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.19.tar.xz')
+bdeps=('pkg-config' 'libdatrie')
+deps=('libdatrie')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

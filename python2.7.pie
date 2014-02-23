@@ -4,11 +4,11 @@ iteration="1"
 version="2.7.6"
 desc="A high-level scripting language"
 url="http://www.python.org/"
-src="http://www.python.org/ftp/python/${version%rc?}/Python-${version}.tar.xz"
-bdeps="bzip2 gdbm openssl zlib expat libffi"
-deps="$bdeps"
-arch="any"
-flags=""
+src=('http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz')
+bdeps=('bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'libffi')
+deps=('bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'libffi')
+arch=('any')
+flags=()
 srcdir="Python-$version"
 
 

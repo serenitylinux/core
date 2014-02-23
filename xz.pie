@@ -4,11 +4,11 @@ iteration="1"
 version="5.0.5"
 desc="Library and command line tools for XZ and LZMA compressed files"
 url="http://tukaani.org/xz/"
-src="http://tukaani.org/${name}/${name}-${version}.tar.gz"
-bdeps=""
-deps="bash"
-arch="any"
-flags=""
+src=('http://tukaani.org/xz/xz-5.0.5.tar.gz')
+bdeps=()
+deps=('bash')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

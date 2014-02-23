@@ -4,11 +4,11 @@ iteration="1"
 version="0.1"
 desc="Serenity Core Packages"
 url="http://serenitylinux.org"
-src=""
-bdeps="base-files"
-deps="spack systemd base-files linux e2fsprogs"
-arch="any"
-flags=""
+src=()
+bdeps=('base-files')
+deps=('spack' 'systemd' 'base-files' 'linux' 'e2fsprogs')
+arch=('any')
+flags=()
 srcdir=""
 
 

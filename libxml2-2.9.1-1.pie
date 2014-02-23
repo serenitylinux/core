@@ -5,10 +5,10 @@ version="2.9.1"
 desc="XML parsing library, version 2"
 url="http://www.xmlsoft.org/"
 src="ftp://ftp.xmlsoft.org/${name}/${name}-${version}.tar.gz" #todo support ftp
-deps="zlib readline ncurses xz"
-bdeps="$deps python2"
-arch="any"
-flags=""
+deps=('zlib' 'readline' 'ncurses' 'xz')
+bdeps=('zlib' 'readline' 'ncurses' 'xz' 'python2')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

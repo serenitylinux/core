@@ -4,11 +4,11 @@ iteration="1"
 version="1.37"
 desc="Generic SCSI utilities"
 url="http://sg.danny.cz/sg/sg3_utils.html"
-src="http://sg.danny.cz/sg/p/$name-$version.tar.xz"
-bdeps=""
-deps=""
-arch="any"
-flags=""
+src=('http://sg.danny.cz/sg/p/sg3_utils-1.37.tar.xz')
+bdeps=()
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

@@ -4,11 +4,11 @@ iteration="3"
 version="1.8.5.1"
 desc="The fast distributed version control system"
 url="http://git-scm.com/"
-src="http://git-core.googlecode.com/files/git-$version.tar.gz"
-bdeps="curl openssl pcre gettext perl expat"
-deps="curl openssl pcre expat"
-arch="any"
-flags=""
+src=('http://git-core.googlecode.com/files/git-1.8.5.1.tar.gz')
+bdeps=('curl' 'openssl' 'pcre' 'gettext' 'perl' 'expat')
+deps=('curl' 'openssl' 'pcre' 'expat')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 function configure() {

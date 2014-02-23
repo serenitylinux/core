@@ -4,11 +4,11 @@ iteration="1"
 version="52.1"
 desc="International Components for Unicode library"
 url="http://www.icu-project.org/"
-src="http://download.icu-project.org/files/${name}4c/${version}/${name}4c-${version//./_}-src.tgz"
-bdeps=""
-deps="gcc"
-arch="any"
-flags=""
+src=('http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-src.tgz')
+bdeps=()
+deps=('gcc')
+arch=('any')
+flags=()
 srcdir="icu/source"
 
 

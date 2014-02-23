@@ -4,11 +4,11 @@ iteration="1"
 version="2.2.52"
 desc="Access control list utilities, libraries and headers"
 url="http://savannah.nongnu.org/projects/acl"
-src="http://download.savannah.gnu.org/releases/$name/$name-$version.src.tar.gz"
-bdeps="attr"
-deps="attr"
-arch="any"
-flags=""
+src=('http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz')
+bdeps=('attr')
+deps=('attr')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

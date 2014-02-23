@@ -4,11 +4,11 @@ iteration="1"
 version="6.4p1"
 desc="Free version of the SSH connectivity tools"
 url="http://www.openssh.org/portable.html"
-src="http://mirror.clarkson.edu/openbsd/OpenSSH/portable/openssh-$version.tar.gz"
-deps="openssl ldns pam"
-bdeps="linux-headers $deps"
-arch="any"
-flags=""
+src=('http://mirror.clarkson.edu/openbsd/OpenSSH/portable/openssh-6.4p1.tar.gz')
+deps=('openssl' 'ldns' 'pam')
+bdeps=('linux-headers' 'openssl' 'ldns' 'pam')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

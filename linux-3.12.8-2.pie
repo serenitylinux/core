@@ -4,11 +4,11 @@ iteration="2"
 version="3.12.8"
 desc="The Linux Kernel"
 url="http://www.kernel.org/"
-src="http://mirror.clarkson.edu/linux/kernel/v3.x/$name-$version.tar.gz"
-bdeps="gcc ncurses curl bc"
-deps=""
-arch="any"
-flags=""
+src=('http://mirror.clarkson.edu/linux/kernel/v3.x/linux-3.12.8.tar.gz')
+bdeps=('gcc' 'ncurses' 'curl' 'bc')
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

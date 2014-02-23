@@ -4,11 +4,11 @@ iteration="1"
 version="16"
 desc="Linux kernel module handling"
 url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
-src="http://mirror.clarkson.edu/linux/utils/kernel/$name/$name-$version.tar.xz"
+src=('http://mirror.clarkson.edu/linux/utils/kernel/kmod/kmod-16.tar.xz')
 bdeps="glibc" #zlib
 deps="$bdeps"
-arch="any"
-flags=""
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

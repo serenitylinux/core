@@ -4,11 +4,11 @@ iteration="1"
 version="3.3.9"
 desc="Utilities for monitoring your system and its processes"
 url="http://sourceforge.net/projects/procps-ng/"
-src="http://downloads.sourceforge.net/project/${name}/Production/${name}-${version}.tar.xz"
-bdeps="ncurses"
-deps="ncurses"
-arch="any"
-flags=""
+src=('http://downloads.sourceforge.net/project/procps-ng/Production/procps-ng-3.3.9.tar.xz')
+bdeps=('ncurses')
+deps=('ncurses')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

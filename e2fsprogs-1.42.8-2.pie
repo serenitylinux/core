@@ -4,11 +4,11 @@ iteration="2"
 version="1.42.8"
 desc="Ext2/3/4 filesystem utilities"
 url="http://e2fsprogs.sourceforge.net"
-src="http://downloads.sourceforge.net/sourceforge/${name}/${name}-${version}.tar.gz"
-deps="bash util-linux"
-bdeps="$deps bc"
-arch="any"
-flags=""
+src=('http://downloads.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-1.42.8.tar.gz')
+deps=('bash' 'util-linux')
+bdeps=('bash' 'util-linux' 'bc')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

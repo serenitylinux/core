@@ -4,11 +4,11 @@ iteration="1"
 version="2.41"
 desc="Expat-based XML parser module for perl"
 url="http://search.cpan.org/dist/XML-Parser/"
-src="http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-${version}.tar.gz"
-bdeps="perl expat"
-deps="perl expat"
-arch="any"
-flags=""
+src=('http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/XML-Parser-2.41.tar.gz')
+bdeps=('perl' 'expat')
+deps=('perl' 'expat')
+arch=('any')
+flags=()
 srcdir="XML-Parser-$version"
 
 

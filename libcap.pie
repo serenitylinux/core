@@ -4,11 +4,11 @@ iteration="1"
 version="2.24"
 desc="POSIX 1003.1e capabilities"
 url="http://sites.google.com/site/fullycapable/"
-src="http://mirror.clarkson.edu/linux/libs/security/linux-privs/libcap2/libcap-${version}.tar.xz"
-bdeps="glibc attr"
-deps="glibc attr"
-arch="any"
-flags=""
+src=('http://mirror.clarkson.edu/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz')
+bdeps=('glibc' 'attr')
+deps=('glibc' 'attr')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

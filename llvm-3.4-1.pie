@@ -3,12 +3,12 @@ name="llvm"
 iteration="1"
 version="3.4"
 url="http://llvm.org/"
-src="http://llvm.org/releases/$version/llvm-$version.src.tar.gz"
+src=('http://llvm.org/releases/3.4/llvm-3.4.src.tar.gz')
 desc="Low Level Virtual Machine"
-bdeps="libffi python2"
-deps="perl"
-arch="any"
-flags=""
+bdeps=('libffi' 'python2')
+deps=('perl')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

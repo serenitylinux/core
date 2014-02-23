@@ -4,11 +4,11 @@ iteration="1"
 version="2.02.105"
 desc="Device Mapper libs and tools"
 url="http://sourceware.org/dm"
-src="ftp://sources.redhat.com/pub/lvm2/LVM2.$version.tgz"
-bdeps="systemd"
-deps=""
-arch="any"
-flags=""
+src=('ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.105.tgz')
+bdeps=('systemd')
+deps=()
+arch=('any')
+flags=()
 srcdir="LVM2.$version"
 
 

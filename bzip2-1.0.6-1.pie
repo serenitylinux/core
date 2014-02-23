@@ -4,11 +4,11 @@ iteration="1"
 version="1.0.6"
 desc="A high-quality data compression program"
 url="http://sources.redhat.com/bzip2"
-src="http://www.bzip.org/$version/bzip2-$version.tar.gz"
-bdeps="glibc"
-deps="glibc"
-arch="any"
-flags=""
+src=('http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz')
+bdeps=('glibc')
+deps=('glibc')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

@@ -4,11 +4,11 @@ iteration="1"
 version="1.60"
 desc="URI for perl"
 url="http://search.cpan.org/dist/URI/"
-src="http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/URI-$version.tar.gz"
-bdeps="perl"
-deps="perl"
-arch="any"
-flags=""
+src=('http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/URI-1.60.tar.gz')
+bdeps=('perl')
+deps=('perl')
+arch=('any')
+flags=()
 srcdir="URI-$version"
 
 

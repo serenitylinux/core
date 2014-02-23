@@ -4,11 +4,11 @@ iteration="1"
 version="0.19"
 desc="ATA SMART library"
 url="http://0pointer.de/blog/projects/being-smart.html"
-src="http://0pointer.de/public/$name-$version.tar.xz"
-bdeps=""
-deps=""
-arch="any"
-flags=""
+src=('http://0pointer.de/public/libatasmart-0.19.tar.xz')
+bdeps=()
+deps=()
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

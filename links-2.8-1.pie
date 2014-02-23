@@ -4,11 +4,11 @@ iteration="1"
 version="2.8"
 desc="A text WWW browser, similar to Lynx"
 url="http://links.twibright.com/"
-src="http://links.twibright.com/download/${name}-${version}.tar.bz2"
-bdeps=""
-deps="bzip2 xz openssl"
-arch="any"
-flags=""
+src=('http://links.twibright.com/download/links-2.8.tar.bz2')
+bdeps=()
+deps=('bzip2' 'xz' 'openssl')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

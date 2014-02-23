@@ -4,11 +4,11 @@ iteration="1"
 version="4.10.2"
 desc="Netscape Portable Runtime"
 url="http://www.mozilla.org/projects/nspr"
-src="http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v$version/src/$name-$version.tar.gz"
+src=('http://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.10.2/src/nspr-4.10.2.tar.gz')
 bdeps="" #zip
 deps="glibc"
-arch="any"
-flags=""
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

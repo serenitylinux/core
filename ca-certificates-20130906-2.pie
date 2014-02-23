@@ -4,11 +4,11 @@ iteration="2"
 version="20130906"
 desc="Common CA certificates"
 url="http://packages.qa.debian.org/c/ca-certificates.html"
-src="http://ftp.debian.org/debian/pool/main/c/${name}/${name}_${version}.tar.gz"
-bdeps="bash openssl findutils coreutils sed perl run-parts python2"
-deps="bash openssl findutils coreutils sed perl run-parts"
-arch="any"
-flags=""
+src=('http://ftp.debian.org/debian/pool/main/c/ca-certificates/ca-certificates_20130906.tar.gz')
+bdeps=('bash' 'openssl' 'findutils' 'coreutils' 'sed' 'perl' 'run-parts' 'python2')
+deps=('bash' 'openssl' 'findutils' 'coreutils' 'sed' 'perl' 'run-parts')
+arch=('any')
+flags=()
 srcdir="$name"
 
 

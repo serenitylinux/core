@@ -4,11 +4,11 @@ iteration="1"
 version="0.50.2"
 desc="The internationalization tool collection"
 url="https://edge.launchpad.net/intltool"
-src="http://edge.launchpad.net/intltool/trunk/${version}/+download/${name}-${version}.tar.gz"
-bdeps="perl-xml-parser"
-deps="perl-xml-parser gettext"
-arch="any"
-flags=""
+src=('http://edge.launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz')
+bdeps=('perl-xml-parser')
+deps=('perl-xml-parser' 'gettext')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

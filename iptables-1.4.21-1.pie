@@ -4,11 +4,11 @@ iteration="1"
 version="1.4.21"
 desc="Linux kernel packet control tool"
 url="http://www.netfilter.org/projects/iptables/index.html"
-src="http://www.netfilter.org/projects/iptables/files/${name}-${version}.tar.bz2"
-bdeps="linux-headers"
-deps="glibc bash"
-arch="any"
-flags=""
+src=('http://www.netfilter.org/projects/iptables/files/iptables-1.4.21.tar.bz2')
+bdeps=('linux-headers')
+deps=('glibc' 'bash')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

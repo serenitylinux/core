@@ -4,11 +4,11 @@ iteration="1"
 version="2.06"
 desc="Portable lossless data compression library"
 url="http://www.oberhumer.com/opensource/lzo"
-src="http://www.oberhumer.com/opensource/lzo/download/lzo-${version}.tar.gz"
-bdeps=""
-deps="glibc"
-arch="any"
-flags=""
+src=('http://www.oberhumer.com/opensource/lzo/download/lzo-2.06.tar.gz')
+bdeps=()
+deps=('glibc')
+arch=('any')
+flags=()
 srcdir="lzo-$version"
 
 

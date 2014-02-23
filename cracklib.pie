@@ -4,11 +4,11 @@ iteration="1"
 version="2.9.0"
 desc="Password Checking Library"
 url="http://sourceforge.net/projects/cracklib"
-src="http://downloads.sourceforge.net/sourceforge/$name/$name-$version.tar.gz"
-bdeps="glibc zlib"
-deps="$bdeps"
-arch="any"
-flags=""
+src=('http://downloads.sourceforge.net/sourceforge/cracklib/cracklib-2.9.0.tar.gz')
+bdeps=('glibc' 'zlib')
+deps=('glibc' 'zlib')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 

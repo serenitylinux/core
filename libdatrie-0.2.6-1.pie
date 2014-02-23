@@ -4,11 +4,11 @@ iteration="1"
 version="0.2.6"
 desc="Implementation of double-array structure for representing trie, as proposed by Junichi Aoe."
 url="http://linux.thai.net/projects/datrie"
-src="http://linux.thai.net/pub/thailinux/software/libthai/${name}-${version}.tar.xz"
-bdeps=""
-deps="glibc"
-arch="any"
-flags=""
+src=('http://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.6.tar.xz')
+bdeps=()
+deps=('glibc')
+arch=('any')
+flags=()
 srcdir="$name-$version"
 
 
