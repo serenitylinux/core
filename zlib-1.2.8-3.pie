@@ -1,0 +1,44 @@
+name="zlib"
+iteration="3"
+version="1.2.8"
+desc="Compression library"
+url="http://www.zlib.net/"
+src=("$url/current/zlib-$version.tar.gz")
+bdeps=()
+arch=('i368' 'x86_64')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr/
+	grep -A 24 '^  Copyright' zlib.h > LICENSE
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	
+	install -D -m644 LICENSE ${dest_dir}/usr/share/licenses/zlib/LICENSE
+	
+	if ( ! $flag_dev ); then
+		rm ${dest_dir}/usr/include/zconf.h
+		rm ${dest_dir}/usr/include/zlib.h
+		rm ${dest_dir}/usr/lib/libz.a
+		rm ${dest_dir}/usr/lib/pkgconfig/zlib.pc
+	fi
+	if ( ! $flag_doc ); then
+		rm ${dest_dir}/usr/share/man/man3/zlib.3
+	fi
+}
+
+function pre_install() {
+	echo "I am the preinstall function"
+}
+
+function post_install() {
+	echo "I am the postinstall function"
+}
