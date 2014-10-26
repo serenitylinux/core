@@ -1,0 +1,41 @@
+# vim: ft=sh
+name="acl"
+iteration="2"
+version="2.2.52"
+desc="Access control list utilities, libraries and headers"
+url="http://savannah.nongnu.org/projects/acl"
+src=('http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz')
+bdeps=('attr')
+deps=('attr')
+flags=('-dev' '-doc' '+locale')
+srcdir="$name-$version"
+
+
+function configure() {
+	export INSTALL_USER=root INSTALL_GROUP=root
+	./configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	make DIST_ROOT="$dest_dir" install install-lib install-dev
+
+	if ( ! $flag_dev ); then
+		rm $dest_dir/usr/lib/libacl.a
+		rm $dest_dir/usr/lib/libacl.la
+		rm $dest_dir/usr/include/ -rf
+	fi
+
+	if ( ! $flag_locale ); then
+		rm $dest_dir/usr/share/locale -rf
+	fi
+
+	if ( ! $flag_doc ); then
+		rm $dest_dir/usr/share/doc -rf
+		rm $dest_dir/usr/share/man -rf
+	fi
+}
