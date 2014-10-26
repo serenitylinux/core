@@ -1,0 +1,41 @@
+# vim: ft=sh
+name="attr"
+iteration="2"
+version="2.4.47"
+desc="Extended attribute support library for ACL support"
+url="http://savannah.nongnu.org/projects/attr"
+src=('http://download.savannah.gnu.org/releases/attr/attr-2.4.47.src.tar.gz')
+bdeps=('glibc' 'gettext')
+deps=('glibc')
+arch=('any')
+flags=('-dev' '-doc' '+locale')
+srcdir="$name-$version"
+
+
+function configure() {
+	export INSTALL_USER=root INSTALL_GROUP=root
+	./configure --prefix=/usr --libdir=/usr/lib --libexecdir=/usr/lib
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make DIST_ROOT=${dest_dir} install install-lib install-dev
+
+	if ( ! $flag_dev ); then
+		rm $dest_dir/usr/lib/libattr.a
+		rm $dest_dir/usr/lib/libattr.la
+		rm $dest_dir/usr/include/ -rf
+	fi
+
+	if ( ! $flag_locale ); then
+		rm $dest_dir/usr/share/locale -rf
+	fi
+
+	if ( ! $flag_doc ); then
+		rm $dest_dir/usr/share/doc -rf
+		rm $dest_dir/usr/share/man -rf
+	fi
+}
