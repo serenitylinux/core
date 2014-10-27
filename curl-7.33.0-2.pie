@@ -1,0 +1,46 @@
+# vim: ft=sh
+name="curl"
+iteration="2"
+version="7.33.0"
+desc="An URL retrieval utility and library"
+url="http://curl.haxx.se"
+src=('http://curl.haxx.se/download/curl-7.33.0.tar.gz')
+bdeps=('openssl' 'zlib(+dev)' 'libssh2')
+deps=('openssl' 'zlib' 'libssh2')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+./configure \
+      --prefix=/usr \
+      --mandir=/usr/share/man \
+      --disable-ldap \
+      --disable-ldaps \
+      --enable-ipv6 \
+      --enable-manual \
+      --enable-threaded-resolver \
+      --without-libidn \
+      --without-librtmp \
+      --with-random=/dev/urandom 
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+
+	if ( ! $flag_dev ); then
+		rm $dest_dir/usr/lib/libcurl.a
+		rm $dest_dir/usr/lib/libcurl.la
+		rm $dest_dir/usr/lib/pkgconfig -rf
+		rm $dest_dir/usr/include/ -rf
+	fi
+
+	if ( ! $flag_doc ); then
+		rm $dest_dir/usr/share/doc -rf
+		rm $dest_dir/usr/share/man -rf
+	fi
+}
