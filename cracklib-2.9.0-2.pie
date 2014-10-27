@@ -1,0 +1,39 @@
+# vim: ft=sh
+name="cracklib"
+iteration="2"
+version="2.9.0"
+desc="Password Checking Library"
+url="http://sourceforge.net/projects/cracklib"
+src=('http://downloads.sourceforge.net/sourceforge/cracklib/cracklib-2.9.0.tar.gz')
+bdeps=('glibc' 'zlib(+dev)')
+deps=('glibc' 'zlib')
+arch=('any')
+flags=('-dev' '+locale')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --sbindir=/usr/bin --without-python
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	mkdir -p $dest_dir/usr/share/dict
+	ln -sf /usr/share/cracklib/cracklib-small $dest_dir/usr/share/dict/cracklib-small
+	sh ./util/cracklib-format dicts/cracklib-small \
+	| sh ./util/cracklib-packer $dest_dir/usr/share/cracklib/pw_dict
+
+	if ( ! $flag_dev ); then
+		rm $dest_dir/usr/lib/libcrack.a
+		rm $dest_dir/usr/lib/libcrack.la
+		rm $dest_dir/usr/include/ -rf
+	fi
+
+	if ( ! $flag_locale ); then
+		rm $dest_dir/usr/share/locale -rf
+	fi
+}
