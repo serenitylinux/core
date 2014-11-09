@@ -5,8 +5,8 @@ version="2.24"
 desc="Miscellaneous system utilities for Linux"
 url="http://www.kernel.org/pub/linux/utils/util-linux/"
 src=('http://mirror.clarkson.edu/linux/utils/util-linux/v2.24/util-linux-2.24.tar.xz')
-bdeps=('coreutils' 'glibc' 'pkg-config' 'ncurses' '[+systemd]systemd(+dev)' 'zlib(+dev)' '[+pam]pam(+dev)')
-deps=('coreutils' 'glibc' 'shadow' 'ncurses' 'zlib' '[+pam]pam')
+bdeps=('coreutils' 'libc(+dev)' 'pkg-config' 'ncurses' '[+systemd]systemd(+dev)' 'zlib(+dev)' '[+pam]pam(+dev)')
+deps=('coreutils' 'libc' 'shadow' 'ncurses' 'zlib' '[+pam]pam')
 flags=('-bash' '-dev' '-doc' '+locale' '+systemd' '+pam')
 srcdir="$name-$version"
 

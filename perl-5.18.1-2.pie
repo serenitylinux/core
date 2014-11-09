@@ -5,8 +5,8 @@ version="5.18.1"
 desc="A highly capable, feature-rich programming language"
 url="http://www.perl.org"
 src=('http://www.cpan.org/src/5.0/perl-5.18.1.tar.gz')
-bdeps=('gdbm' 'coreutils' 'glibc' 'bash')
-deps=('gdbm' 'coreutils' 'glibc' 'bash')
+bdeps=('gdbm' 'coreutils' 'libc(+dev)' 'bash')
+deps=('gdbm' 'coreutils' 'libc' 'bash')
 flags=('-dev' '-doc')
 srcdir="$name-$version"
 

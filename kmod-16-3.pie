@@ -5,8 +5,8 @@ version="16"
 desc="Linux kernel module handling"
 url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
 src=('http://mirror.clarkson.edu/linux/utils/kernel/kmod/kmod-16.tar.xz')
-bdeps="glibc"
-deps="glibc"
+bdeps="libc(+dev)"
+deps="libc"
 flags=('-dev' '-doc')
 srcdir="$name-$version"
 

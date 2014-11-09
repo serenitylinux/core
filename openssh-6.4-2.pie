@@ -5,8 +5,8 @@ version="6.4p1"
 desc="Free version of the SSH connectivity tools"
 url="http://www.openssh.org/portable.html"
 src=('http://mirror.clarkson.edu/openbsd/OpenSSH/portable/openssh-6.4p1.tar.gz')
-bdeps=('linux-headers' 'libssl(+dev)' 'ldns(+dev)' '[+pam]pam' 'zlib(+dev)')
-deps=('libssl' 'ldns' '[+pam]pam' 'zlib')
+bdeps=('linux-headers' 'libc(+dev)' 'libssl(+dev)' 'ldns(+dev)' '[+pam]pam' 'zlib(+dev)')
+deps=('libssl' 'libc' 'ldns' '[+pam]pam' 'zlib')
 flags=('-pam' '-doc')
 srcdir="$name-$version"
 

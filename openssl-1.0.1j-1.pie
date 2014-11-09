@@ -5,8 +5,8 @@ version="1.0.1j"
 desc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security"
 url="https://www.openssl.org"
 src=('http://www.openssl.org/source/openssl-1.0.1j.tar.gz')
-bdeps=('perl' 'zlib(+dev)')
-deps=()
+bdeps=('libc(+dev)' 'perl' 'zlib(+dev)')
+deps=('libc' 'zlib')
 flags=('-dev' '-doc')
 srcdir="$name-$version"
 

@@ -5,8 +5,8 @@ version="2.38.2"
 desc="Common C routines used by GTK+ and other libs"
 url="http://www.gtk.org/"
 src=('http://ftp.gnome.org/pub/GNOME/sources/glib/2.38/glib-2.38.2.tar.xz')
-bdeps=('pkg-config' 'zlib(+dev)' 'pcre(+dev)' 'libffi(+dev)' 'python2')
-deps=('libffi' 'zlib' 'pcre' '[+dev]python2')
+bdeps=('libc(+dev)' 'pkg-config' 'zlib(+dev)' 'pcre(+dev)' 'libffi(+dev)' 'python2')
+deps=('libc' 'libffi' 'zlib' 'pcre' '[+dev]python2')
 flags=('-dbg' '-dev' '-doc' '+locale')
 srcdir="glib-$version"
 

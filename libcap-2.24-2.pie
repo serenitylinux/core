@@ -5,8 +5,8 @@ version="2.24"
 desc="POSIX 1003.1e capabilities"
 url="http://sites.google.com/site/fullycapable/"
 src=('http://mirror.clarkson.edu/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz')
-bdeps=('glibc' 'attr(+dev)')
-deps=('glibc' 'attr')
+bdeps=('libc(+dev)' 'attr(+dev)')
+deps=('libc' 'attr')
 flags=('-dev' '-doc')
 srcdir="$name-$version"
 

@@ -5,8 +5,8 @@ version="7.4"
 desc="Vi IMproved"
 url="http://www.vim.org"
 src=('http://mirrors-usa.go-parts.com/pub/vim/unix/vim-7.4.tar.bz2')
-bdeps=('glibc' 'acl(+dev)' 'attr(+dev)' 'pcre(+dev)')
-deps=('glibc' 'acl' 'attr' 'pcre')
+bdeps=('libc(+dev)' 'acl(+dev)' 'attr(+dev)' 'pcre(+dev)')
+deps=('libc' 'acl' 'attr' 'pcre')
 flags=('-doc' '+locale' '-tutor')
 srcdir="vim74"
 

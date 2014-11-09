@@ -5,8 +5,8 @@ version="208"
 desc=""
 src=('http://www.freedesktop.org/software/systemd/systemd-208.tar.xz')
 url="http://www.freedesktop.org/wiki/Software/systemd"
-bdeps=('intltool' 'gperf' 'pkg-config' 'dbus' 'libffi(+dev)' 'pam(+dev)' 'glib2(+dev)' 'libgcrypt' 'kmod' 'libcap(+dev)' 'pcre(+dev)' 'attr(+dev)' 'xz(+dev)' 'acl(+dev)' 'util-linux(+dev)')
-deps=('intltool' 'gperf' 'dbus' 'libffi' 'pam' 'glib2' 'libgcrypt' 'kmod' 'libcap' 'pcre' 'attr' 'xz' 'acl' 'util-linux')
+bdeps=('intltool' 'gperf' 'pkg-config' 'dbus' 'libffi(+dev)' 'pam(+dev)' 'glib2(+dev)' 'libgcrypt' 'kmod' 'libcap(+dev)' 'pcre(+dev)' 'attr(+dev)' 'xz(+dev)' 'acl(+dev)' 'util-linux(+dev)' 'libc(+dev)')
+deps=('intltool' 'gperf' 'dbus' 'libffi' 'pam' 'glib2' 'libgcrypt' 'kmod' 'libcap' 'pcre' 'attr' 'xz' 'acl' 'util-linux' 'libc')
 flags=('-dev' '-bash' '-zsh' '-doc')
 srcdir="$name-$version"
 

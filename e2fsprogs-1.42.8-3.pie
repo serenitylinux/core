@@ -5,9 +5,8 @@ version="1.42.8"
 desc="Ext2/3/4 filesystem utilities"
 url="http://e2fsprogs.sourceforge.net"
 src=('http://downloads.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-1.42.8.tar.gz')
-bdeps=('util-linux(+dev)' 'bc')
-deps=('util-linux')
-arch=('any')
+bdeps=('libc(+dev)' 'util-linux(+dev)' 'bc')
+deps=('libc' 'util-linux')
 flags=('-dev' '-doc' '+locale' )
 srcdir="$name-$version"
 

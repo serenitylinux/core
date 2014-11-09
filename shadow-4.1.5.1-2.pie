@@ -5,8 +5,8 @@ version="4.1.5.1"
 desc="Password and account management tool suite with support for shadow files and PAM"
 url="http://pkg-shadow.alioth.debian.org/"
 src=('http://ftp.archlinux.org/other/packages/shadow/shadow-4.1.5.1.tar.bz2')
-bdeps=('acl(+dev)' 'attr(+dev)')
-deps=('acl' 'attr')
+bdeps=('acl(+dev)' 'attr(+dev)' 'libc(+dev)')
+deps=('acl' 'attr' 'libc')
 flags=('-doc' '+locale')
 srcdir="$name-$version"
 

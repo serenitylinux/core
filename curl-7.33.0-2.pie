@@ -5,8 +5,8 @@ version="7.33.0"
 desc="An URL retrieval utility and library"
 url="http://curl.haxx.se"
 src=('http://curl.haxx.se/download/curl-7.33.0.tar.gz')
-bdeps=('libssl(+dev)' 'zlib(+dev)' 'libssh2(+dev)')
-deps=('libssl' 'zlib' 'libssh2')
+bdeps=('libssl(+dev)' 'zlib(+dev)' 'libssh2(+dev)' 'libc(+dev)')
+deps=('libssl' 'zlib' 'libssh2' 'libc')
 flags=('-dev' '-doc')
 srcdir="$name-$version"
 

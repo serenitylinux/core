@@ -1,0 +1,17 @@
+name="libc"
+iteration="1"
+version="0.1"
+desc="Meta package for libc"
+deps=('[+dev]glibc(+dev)' '[-dev]glibc(-dev)' ) #TODO passthrough flags
+flags=('-dev' '+glibc')
+
+
+function configure() {
+	none
+}
+function build() {
+	none
+}
+function installpkg() {
+	none
+}

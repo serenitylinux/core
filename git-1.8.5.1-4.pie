@@ -5,8 +5,8 @@ version="1.8.5.1"
 desc="The fast distributed version control system"
 url="http://git-scm.com/"
 src=('http://git-core.googlecode.com/files/git-1.8.5.1.tar.gz')
-bdeps=('curl(+dev)' 'pcre(+dev)' 'perl(+dev)' 'openssl(+dev)' 'expat(+dev)' 'zlib(+dev)')
-deps=('curl' 'pcre' 'perl' 'openssl' 'expat' 'zlib' '[+gui]tk' '[+locale]gettext')
+bdeps=('curl(+dev)' 'pcre(+dev)' 'perl(+dev)' 'libssl(+dev)' 'expat(+dev)' 'zlib(+dev)' 'libc(+dev)')
+deps=('curl' 'pcre' 'perl' 'libssl' 'expat' 'zlib' '[+gui]tk' '[+locale]gettext' 'libc')
 flags=('+locale' '-gui' '-web')
 srcdir="$name-$version"
 

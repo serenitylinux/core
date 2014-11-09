@@ -4,9 +4,10 @@ iteration="2"
 version="4.4"
 desc="run scripts or programs in a directory"
 url="http://packages.qa.debian.org/d/debianutils.html"
-src=('http://ftp.archlinux.org/other/run-parts/debianutils_4.4.tar.gz')
-bdeps=()
-deps=()
+#src=('http://ftp.archlinux.org/other/run-parts/debianutils_4.4.tar.gz')
+src=('http://ftp.de.debian.org/debian/pool/main/d/debianutils/debianutils_4.4.tar.gz')
+bdeps=('libc(+dev)')
+deps=('libc')
 flags=('-doc')
 srcdir="debianutils-$version"
 
