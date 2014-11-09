@@ -1,0 +1,17 @@
+name="libssl"
+iteration="1"
+version="0.0.1"
+desc="Meta package for libssl"
+deps=('[+dev]openssl(+dev)' '[+doc]openssl(+doc)' 'openssl' ) #TODO passthrough flags
+flags=('-dev' '-doc' '+openssl')
+
+
+function configure() {
+	none
+}
+function build() {
+	none
+}
+function installpkg() {
+	none
+}

@@ -1,0 +1,38 @@
+# vim: ft=sh
+name="expat"
+iteration="2"
+version="2.1.0"
+desc="An XML parser library"
+url="http://expat.sourceforge.net/"
+src="http://hivelocity.dl.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz"
+#src="http://downloads.sourceforge.net/sourceforge/expat/${pkgname}-${pkgver}.tar.gz"
+bdeps=('glibc')
+deps=('glibc')
+arch=('any')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 COPYING ${dest_dir}/usr/share/licenses/${name}/COPYING
+
+	if ( ! $flag_dev ); then
+		rm $dest_dir/usr/lib/libexpat.a
+		rm $dest_dir/usr/lib/libexpat.la
+		rm $dest_dir/usr/include/ -rf
+		rm $dest_dir/usr/lib/pkgconfig/ -rf
+	fi
+
+	if ( ! $flag_doc ); then
+		rm $dest_dir/usr/share/man -rf
+	fi
+}

@@ -1,0 +1,65 @@
+# vim: ft=sh
+name="systemd"
+iteration="3"
+version="208"
+desc=""
+src=('http://www.freedesktop.org/software/systemd/systemd-208.tar.xz')
+url="http://www.freedesktop.org/wiki/Software/systemd"
+bdeps=('intltool' 'gperf' 'pkg-config' 'dbus' 'libffi(+dev)' 'pam(+dev)' 'glib2(+dev)' 'libgcrypt' 'kmod' 'libcap(+dev)' 'pcre(+dev)' 'attr(+dev)' 'xz(+dev)' 'acl(+dev)' 'util-linux(+dev)')
+deps=('intltool' 'gperf' 'dbus' 'libffi' 'pam' 'glib2' 'libgcrypt' 'kmod' 'libcap' 'pcre' 'attr' 'xz' 'acl' 'util-linux')
+flags=('-dev' '-bash' '-zsh' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure \
+		--libexecdir=/usr/lib \
+		--localstatedir=/var \
+		--sysconfdir=/etc \
+		--disable-introspection \
+		--disable-gtk-doc \
+		--disable-audit \
+		--disable-ima \
+		--with-sysvinit-path= \
+		--with-sysvrcnd-path= \
+		--with-firmware-path="/usr/lib/firmware/updates:/usr/lib/firmware"
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	cat > ${dest_dir}/etc/pam.d/other <<EOT
+#%PAM-1.0
+auth		required	pam_unix.so
+account		required	pam_unix.so
+password	required	pam_unix.so
+session		required	pam_unix.so
+EOT
+	rm ${dest_dir}/usr/lib/rpm/macros.d/macros.systemd
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include/
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+		rm -rf ${dest_dir}/usr/share/pkgconfig
+		rm ${dest_dir}/usr/lib/*.la
+		rm ${dest_dir}/usr/lib/security/*.la
+	fi
+
+	if ( ! $flag_bash ); then
+		rm -rf ${dest_dir}/usr/share/bash-completion
+	fi
+	for i in $(ls ${dest_dir}/usr/share/doc/LICENSE.*); do
+		install -D -m644 ${dest_dir}/usr/share/doc/$i ${dest_dir}/usr/share/licenses/${name}/$i
+	done
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/doc
+	fi
+
+	if ( ! $flag_zsh ); then
+		rm -rf ${dest_dir}/usr/share/zsh
+	fi
+}

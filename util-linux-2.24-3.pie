@@ -1,0 +1,59 @@
+# vim: ft=sh
+name="util-linux"
+iteration="3"
+version="2.24"
+desc="Miscellaneous system utilities for Linux"
+url="http://www.kernel.org/pub/linux/utils/util-linux/"
+src=('http://mirror.clarkson.edu/linux/utils/util-linux/v2.24/util-linux-2.24.tar.xz')
+bdeps=('coreutils' 'glibc' 'pkg-config' 'ncurses' '[+systemd]systemd(+dev)' 'zlib(+dev)' '[+pam]pam(+dev)')
+deps=('coreutils' 'glibc' 'shadow' 'ncurses' 'zlib' '[+pam]pam')
+flags=('-bash' '-dev' '-doc' '+locale' '+systemd' '+pam')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr \
+		--libdir=/usr/lib \
+		--bindir=/usr/bin \
+		--localstatedir=/run \
+		--disable-chfn-chsh-password \
+		--enable-fs-paths-extra=/usr/bin \
+		--enable-raw \
+		--enable-vipw \
+		--enable-newgrp \
+		--enable-chfn-chsh \
+		--enable-write \
+		--enable-mesg \
+		--enable-socket-activation
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include
+		rm ${dest_dir}/usr/lib/*.a
+		rm ${dest_dir}/usr/lib/*.la
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+	fi
+
+	if ( ! $flag_systemd ); then
+		rm -rf ${dest_dir}/usr/lib/systemd
+	fi
+
+	if ( ! $flag_bash ); then
+		rm -rf ${dest_dir}/usr/share/bash-completion
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+
+	if ( ! $flag_locale ); then
+		rm -rf ${dest_dir}/usr/share/locale
+	fi
+}

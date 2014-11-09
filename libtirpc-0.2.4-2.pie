@@ -1,0 +1,36 @@
+# vim: ft=sh
+name="libtirpc"
+iteration="2"
+version="0.2.4"
+desc="Transport Independent RPC library (SunRPC replacement)"
+url="http://libtirpc.sourceforge.net/"
+src=('http://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-0.2.4.tar.bz2')
+bdeps=('glibc')
+deps=('glibc')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --sysconf=/etc --disable-gssapi --disable-ipv6
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -D -m644 COPYING "${dest_dir}"/usr/share/licenses/${name}/LICENSE
+
+	if ( ! $flag_dev ); then
+		rm ${dest_dir}/usr/lib/*.a
+		rm ${dest_dir}/usr/lib/*.la
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/pkgconfig
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+}

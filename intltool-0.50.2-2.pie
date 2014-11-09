@@ -1,0 +1,34 @@
+# vim: ft=sh
+name="intltool"
+iteration="2"
+version="0.50.2"
+desc="The internationalization tool collection"
+url="https://edge.launchpad.net/intltool"
+src=('http://edge.launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz')
+bdeps=('perl' 'perl-xml-parser')
+deps=('perl' 'perl-xml-parser' 'gettext')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/share/aclocal
+		rm -rf ${dest_dir}/usr/share/intltool
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	else 
+		install -D -m644 doc/I18N-HOWTO "${dest_dir}/usr/share/doc/${name}/I18N-HOWTO"
+	fi
+}

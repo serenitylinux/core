@@ -1,0 +1,28 @@
+# vim: ft=sh
+name="pkg-config"
+iteration="2"
+version="0.28"
+desc="A system for managing library compile/link flags"
+url="http://pkgconfig.freedesktop.org/wiki/"
+src=('http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz')
+bdeps=()
+deps=()
+flags=('-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --with-internal-glib
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/doc/
+		rm -rf ${dest_dir}/usr/share/man/
+	fi
+}

@@ -1,0 +1,43 @@
+# vim: ft=sh
+name="openssh"
+iteration="2"
+version="6.4p1"
+desc="Free version of the SSH connectivity tools"
+url="http://www.openssh.org/portable.html"
+src=('http://mirror.clarkson.edu/openbsd/OpenSSH/portable/openssh-6.4p1.tar.gz')
+bdeps=('linux-headers' 'libssl(+dev)' 'ldns(+dev)' '[+pam]pam' 'zlib(+dev)')
+deps=('libssl' 'ldns' '[+pam]pam' 'zlib')
+flags=('-pam' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	pam=""
+	if ( $flag_pam ); then
+		pam="--with-pam"
+	fi
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--libexecdir=/usr/lib/ssh \
+		--sysconfdir=/etc/ssh \
+		--with-ldns \
+		$pam \
+		--with-privsep-user=nobody \
+		--with-md5-passwords \
+		--with-pid-dir=/run
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 LICENCE "${dest_dir}/usr/share/licenses/${name}/LICENCE"
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+}

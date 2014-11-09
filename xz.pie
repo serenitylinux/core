@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="xz"
-iteration="1"
+iteration="2"
 version="5.0.5"
 desc="Library and command line tools for XZ and LZMA compressed files"
 url="http://tukaani.org/xz/"
 src=('http://tukaani.org/xz/xz-5.0.5.tar.gz')
 bdeps=()
-deps=('bash')
-arch=('any')
-flags=()
+deps=()
+flags=('-dev' '-doc' '+locale')
 srcdir="$name-$version"
 
 
@@ -30,4 +29,20 @@ function installpkg() {
 	install -d -m755 ${dest_dir}/usr/share/licenses/xz/
 	ln -sf /usr/share/doc/xz/COPYING ${dest_dir}/usr/share/licenses/xz/
 	ln -sf /usr/share/licenses/common/GPL2/license.txt ${dest_dir}/usr/share/doc/xz/COPYING.GPLv2
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+		rm ${dest_dir}/usr/lib/*.a
+		rm ${dest_dir}/usr/lib/*.la
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/doc
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+
+	if ( ! $flag_locale ); then
+		rm -rf ${dest_dir}/usr/share/locale
+	fi
 }

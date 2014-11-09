@@ -1,0 +1,36 @@
+# vim: ft=sh
+name="libssh2"
+iteration="2"
+version="1.4.3"
+desc="A library implementing the SSH2 protocol as defined by Internet Drafts"
+url="http://www.libssh2.org/"
+src=('http://www.libssh2.org/download/libssh2-1.4.3.tar.gz')
+bdeps=('openssl' 'zlib(+dev)')
+deps=('openssl' 'zlib')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 COPYING "$dest_dir/usr/share/licenses/$name/LICENSE"
+
+	if ( ! $flag_dev ); then
+		rm ${dest_dir}/usr/lib/libssh2.a
+		rm ${dest_dir}/usr/lib/libssh2.la
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+}

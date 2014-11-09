@@ -1,0 +1,36 @@
+# vim: ft=sh
+name="mpfr"
+iteration="2"
+version="3.1.2"
+desc="Multiple-precision floating-point library"
+url="http://www.mpfr.org/"
+src=('http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz')
+bdeps=('gmp')
+deps=('gmp')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr --enable-thread-safe --enable-shared
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+
+	install -Dm644 ${dest_dir}/usr/share/doc/mpfr/COPYING ${dest_dir}/usr/share/licenses/mpfr/LICENSE
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include
+		rm ${dest_dir}/usr/lib/*.a
+		rm ${dest_dir}/usr/lib/*.la
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share
+	fi
+}

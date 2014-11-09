@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="perl"
-iteration="1"
+iteration="2"
 version="5.18.1"
 desc="A highly capable, feature-rich programming language"
 url="http://www.perl.org"
 src=('http://www.cpan.org/src/5.0/perl-5.18.1.tar.gz')
 bdeps=('gdbm' 'coreutils' 'glibc' 'bash')
 deps=('gdbm' 'coreutils' 'glibc' 'bash')
-arch=('any')
-flags=""
+flags=('-dev' '-doc')
 srcdir="$name-$version"
 
 
@@ -25,7 +24,7 @@ function configure() {
     -Dsitescript=/usr/bin/site_perl \
     -Dvendorscript=/usr/bin/vendor_perl \
     -Dinc_version_list=none \
-    -Dman1ext=1perl -Dman3ext=3perl ${arch_opts} \
+    -Dman1ext=1perl -Dman3ext=3perl \
     -Dlddlflags="-shared ${LDFLAGS}" -Dldflags="${LDFLAGS}"	
 }
 
@@ -46,4 +45,16 @@ function installpkg() {
 	done
 	find $dest_dir/usr/lib -name *.pod -delete
 	find $dest_dir -name .packlist -delete
+
+	rm ${dest_dir}/*.0 #why do these files even exist
+	
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/lib/perl5/core_perl/CORE/*.h #heades
+		find ${dest_dir} -iname '*.bs' -exec rm {} \+
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/perl5/core_perl/pod
+		find ${dest_dir} -iname '*.pod' -exec rm {} \+
+	fi
 }

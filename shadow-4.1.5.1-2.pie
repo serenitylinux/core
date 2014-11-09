@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="shadow"
-iteration="1"
+iteration="2"
 version="4.1.5.1"
 desc="Password and account management tool suite with support for shadow files and PAM"
 url="http://pkg-shadow.alioth.debian.org/"
 src=('http://ftp.archlinux.org/other/packages/shadow/shadow-4.1.5.1.tar.bz2')
-bdeps=('bash')
-deps=('bash')
-arch=('any')
-flags=()
+bdeps=('acl(+dev)' 'attr(+dev)')
+deps=('acl' 'attr')
+flags=('-doc' '+locale')
 srcdir="$name-$version"
 
 
@@ -36,4 +35,12 @@ function installpkg() {
 rm \
       "$dest_dir"/usr/bin/{login,su,chsh,chfn,sg,nologin} \
       "$dest_dir"/usr/sbin/{vipw,vigr}
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+
+	if ( ! $flag_locale); then
+		rm -rf ${dest_dir}/usr/share/locale
+	fi
 }

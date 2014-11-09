@@ -1,0 +1,40 @@
+# vim: ft=sh
+name="ldns"
+iteration="2"
+version="1.6.16"
+desc="Fast DNS library supporting recent RFCs"
+url="http://www.nlnetlabs.nl/projects/ldns/"
+src=('http://www.nlnetlabs.nl/downloads/ldns/ldns-1.6.16.tar.gz')
+bdeps=('zlib(+dev)' 'libssl(+dev)')
+deps=('zlib' 'libssl')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--disable-rpath \
+		--with-drill
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -D -m644 LICENSE "${dest_dir}/usr/share/licenses/${name}/LICENSE"
+
+	if ( ! $flag_dev ); then
+		rm ${dest_dir}/usr/lib/*.a
+		rm ${dest_dir}/usr/lib/*.la
+		rm -rf ${dest_dir}/usr/include
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+}

@@ -1,0 +1,30 @@
+# vim: ft=sh
+name="run-parts"
+iteration="2"
+version="4.4"
+desc="run scripts or programs in a directory"
+url="http://packages.qa.debian.org/d/debianutils.html"
+src=('http://ftp.archlinux.org/other/run-parts/debianutils_4.4.tar.gz')
+bdeps=()
+deps=()
+flags=('-doc')
+srcdir="debianutils-$version"
+
+
+function configure() {
+	default
+}
+
+function build() {
+	make run-parts
+}
+
+function installpkg() {
+	install -D -m755 run-parts $dest_dir/usr/bin/run-parts
+	if ( $flag_doc ); then
+		install -D -m644 run-parts.8 $dest_dir/usr/share/man/man8/run-parts.8
+		for l in po4a/*/run-parts.8; do
+			install -D -m644  ${l} $dest_dir/usr/share/man/${l:5:2}/man8/run-parts.8
+		done
+	fi
+}

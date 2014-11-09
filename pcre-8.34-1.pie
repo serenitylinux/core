@@ -1,0 +1,41 @@
+# vim: ft=sh
+name="pcre"
+iteration="2"
+version="8.34"
+desc="A library that implements Perl 5-style regular expressions"
+url="http://www.pcre.org/"
+src=('http://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.34.tar.gz')
+bdeps=('glibc')
+deps=('glibc')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	./configure --prefix=/usr \
+		--enable-pcre16 --enable-pcre32 --enable-jit \
+		--enable-utf --enable-unicode-properties
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	mkdir -p ${dest_dir}/usr/lib64
+	ln -s ../lib/libpcre.so ${dest_dir}/usr/lib64/libpcre.so.3
+	install -Dm644 LICENCE "${dest_dir}"/usr/share/licenses/${name}/LICENSE
+
+	if ( ! $flag_dev ); then
+		rm ${dest_dir}/usr/lib/*.a
+		rm ${dest_dir}/usr/lib/*.la
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+	fi
+	
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/doc
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+}

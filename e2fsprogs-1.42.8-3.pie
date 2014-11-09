@@ -5,8 +5,8 @@ version="1.42.8"
 desc="Ext2/3/4 filesystem utilities"
 url="http://e2fsprogs.sourceforge.net"
 src=('http://downloads.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-1.42.8.tar.gz')
-deps=('bash' 'util-linux')
-bdeps=('bash' 'util-linux' 'bc')
+bdeps=('util-linux(+dev)' 'bc')
+deps=('util-linux')
 arch=('any')
 flags=('-dev' '-doc' '+locale' )
 srcdir="$name-$version"
@@ -28,14 +28,12 @@ function build() {
 
 function installpkg() {
 	unset MAKEFLAGS
-	set -x
 	make DESTDIR=${dest_dir} install install-libs
 #	rm -v ${dest_dir}/usr/lib/lib{com_err,e2p,ext2fs,ss}.a
 
 
 	if ( ! $flag_dev ); then
 		rm $dest_dir/usr/lib/*.a
-#		rm $dest_dir/usr/lib/*.la
 		rm $dest_dir/usr/lib/pkgconfig/ -rf
 		rm $dest_dir/usr/include/ -rf
 	fi

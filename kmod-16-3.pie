@@ -1,0 +1,39 @@
+# vim: ft=sh
+name="kmod"
+iteration="3"
+version="16"
+desc="Linux kernel module handling"
+url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
+src=('http://mirror.clarkson.edu/linux/utils/kernel/kmod/kmod-16.tar.xz')
+bdeps="glibc"
+deps="glibc"
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	man=""
+	if ( ! $flag_doc ); then
+		man="--disable-manpages"
+	fi 
+	./configure \
+		--sysconfdir=/etc $man 
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -dm755 "$dest_dir"/{etc,usr/lib}/{depmod,modprobe}.d
+	for tool in {ins,ls,rm,dep}mod mod{probe,info}; do
+		ln -s kmod "$dest_dir/usr/bin/$tool"
+	done
+	
+	if ( ! $flag_dev ); then
+		rm ${dest_dir}/usr/lib/*.la
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+	fi
+}

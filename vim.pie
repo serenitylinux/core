@@ -1,19 +1,18 @@
 # vim: ft=sh
 name="vim"
-iteration="1"
+iteration="2"
 version="7.4"
 desc="Vi IMproved"
 url="http://www.vim.org"
 src=('http://mirrors-usa.go-parts.com/pub/vim/unix/vim-7.4.tar.bz2')
-bdeps=('glibc' 'perl')
-deps=('glibc' 'perl')
-arch=('any')
-flags=()
+bdeps=('glibc' 'acl(+dev)' 'attr(+dev)' 'pcre(+dev)')
+deps=('glibc' 'acl' 'attr' 'pcre')
+flags=('-doc' '+locale' '-tutor')
 srcdir="vim74"
 
 
 function configure() {
-	./configure --prefix=/usr --localstatedir=/var/lib/vim --with-features=huge --with-x=no --disable-gui --disable-netbeans     --enable-perlinterp     --disable-pythoninterp     --disable-python3interp     --disable-rubyinterp     --disable-luainterp
+	./configure --prefix=/usr --localstatedir=/var/lib/vim --with-features=huge --with-x=no --disable-gui --disable-netbeans     --disable-perlinterp     --disable-pythoninterp     --disable-python3interp     --disable-rubyinterp     --disable-luainterp
 }
 
 function build() {
@@ -22,4 +21,17 @@ function build() {
 
 function installpkg() {
 	default
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+		rm -rf ${dest_dir}/usr/share/vim/vim74/doc
+	fi
+
+	if ( ! $flag_locale ); then
+		rm -rf ${dest_dir}/usr/share/vim/vim74/lang
+	fi
+
+	if ( ! $flag_tutor ); then
+		rm -rf ${dest_dir}/usr/share/vim/vim74/tutor
+	fi
 }
