@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="mpfr"
-iteration="2"
+iteration="3"
 version="3.1.2"
 desc="Multiple-precision floating-point library"
 url="http://www.mpfr.org/"
 src=('http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.xz')
-bdeps=('libc(+dev)' 'gmp')
+bdeps=('libc(+dev)' 'gmp(+dev)')
 deps=('libc' 'gmp')
 flags=('-dev' '-doc')
 srcdir="$name-$version"

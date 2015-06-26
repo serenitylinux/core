@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="device-mapper"
-iteration="1"
+iteration="2"
 version="2.02.105"
 desc="Device Mapper libs and tools"
 url="http://sourceware.org/dm"
 src=('ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.105.tgz')
-bdeps=('systemd')
-deps=()
-arch=('any')
-flags=()
+bdeps=('systemd(+dev)' 'libc(+dev)' 'ncurses(+dev)' 'readline(+dev)')
+deps=('libc' 'ncurses' 'readline')
+flags=('-dev' '-doc')
 srcdir="LVM2.$version"
 
 
@@ -27,4 +26,13 @@ function build() {
 
 function installpkg() {
 	make DESTDIR="${dest_dir}" install_device-mapper
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/lib/pkgconfig
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
 }

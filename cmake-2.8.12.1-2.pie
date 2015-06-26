@@ -1,0 +1,45 @@
+# vim: ft=sh
+name="cmake"
+iteration="2"
+version="2.8.12.1"
+desc="A cross-platform open-source make system"
+url="http://www.cmake.org/"
+src=('http://www.cmake.org/files/v2.8/cmake-2.8.12.1.tar.gz')
+bdeps=('libarchive' 'libc(+dev)' 'zlib(+dev)' 'curl(+dev)' 'expat(+dev)' 'ncurses(+dev)')
+deps=('curl' 'libarchive' 'zlib' 'curl' 'expat' 'ncurses')
+flags=('-dev' '-doc' '-extras')
+srcdir="$name-$version"
+
+
+function configure() {
+	./bootstrap --prefix=/usr \
+		--mandir=/share/man \
+		--docdir=/share/doc/cmake \
+		--system-libs
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+	install -Dm644 Copyright.txt \
+		"${dest_dir}"/usr/share/licenses/${name}/LICENSE
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/share/aclocal
+		rm -rf ${dest_dir}/usr/share/cmake-2.8
+		rm -rf ${dest_dir}/usr/share/cmake-2.8/include
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/doc
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+
+	if ( ! $flag_extra ); then
+		rm -rf ${dest_dir}/usr/share/cmake-2.8/completions
+		rm -rf ${dest_dir}/usr/share/cmake-2.8/editors
+	fi
+}

@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="elfutils"
-iteration="1"
+iteration="2"
 version="0.157"
 desc="Libraries and utilities to handle ELF object files and DWARF debugging information"
 url="https://fedorahosted.org/elfutils/"
 src=('https://fedorahosted.org/releases/e/l/elfutils/0.157/elfutils-0.157.tar.bz2')
-deps=('zlib' 'bzip2' 'xz')
-bdeps=('pkg-config' 'pcre' 'libffi' 'python2' 'gcc')
-arch=('any')
-flags=()
+bdeps=('pkg-config' 'bzip2' 'zlib(+dev)' 'gcc' 'xz(+dev)' 'libc(+dev)')
+deps=('bzip2' 'xz' 'zlib' 'libc')
+flags=('-dev' '+locale')
 srcdir="$name-$version"
 
 
@@ -22,5 +21,12 @@ function build() {
 
 function installpkg() {
 	default
-	rm "${dest_dir}"/usr/lib/lib{asm,dw,elf}.a
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include/
+		rm "${dest_dir}"/usr/lib/*.a
+	fi
+
+	if ( ! $flag_locale ); then
+		rm -rf ${dest_dir}/usr/share/locale
+	fi
 }

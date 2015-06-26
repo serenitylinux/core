@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="dhcpcd"
-iteration="1"
+iteration="2"
 version="6.1.0"
 desc="RFC2131 compliant DHCP client daemon"
 url="http://roy.marples.name/projects/dhcpcd/"
 src=('http://roy.marples.name/downloads/dhcpcd/dhcpcd-6.1.0.tar.bz2')
-bdeps=('glibc' 'bash')
-deps=('glibc' 'bash')
-arch=('any')
-flags=()
+bdeps=('libc(+dev)')
+deps=('libc')
+flags=('-doc')
 srcdir="$name-$version"
 
 
@@ -23,4 +22,8 @@ function build() {
 function installpkg() {
 	default
   	install -d $dest_dir/usr/share/licenses/$name
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
 }

@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="flex"
-iteration="1"
+iteration="2"
 version="2.5.37"
 desc="A tool for generating text-scanning programs"
 url="http://flex.sourceforge.net"
 src=('http://downloads.sourceforge.net/sourceforge/flex/flex-2.5.37.tar.bz2')
-deps=('glibc' 'm4' 'bash')
-bdeps=('glibc' 'm4' 'bash')
-arch=('any')
-flags=()
+bdeps=('libc(+dev)' 'm4')
+deps=('libc')
+flags=('-dev' '-doc' '+locale')
 srcdir="$name-$version"
 
 
@@ -23,4 +22,19 @@ function build() {
 function installpkg() {
 	default
 	install -Dm644 COPYING ${dest_dir}/usr/share/licenses/$name/license.txt
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/usr/include
+		rm -rf ${dest_dir}/usr/lib/*.a
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/doc
+		rm -rf ${dest_dir}/usr/sare/info
+		rm -rf ${dest_dir}/usr/sare/man
+	fi
+
+	if ( ! $flag_locale ); then
+		rm -rf ${dest_dir}/usr/share/locale
+	fi
 }

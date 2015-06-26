@@ -1,14 +1,13 @@
 # vim: ft=sh
 name="htop"
-iteration="1"
+iteration="2"
 version="1.0.2"
 desc="Interactive process viewer"
 url="http://htop.sourceforge.net/"
 src=('http://downloads.sourceforge.net/htop/htop-1.0.2.tar.gz')
-bdeps=('ncurses' 'python2')
-deps=('ncurses')
-arch=('any')
-flags=()
+bdeps=('libc(+dev)' 'ncurses(+dev)')
+deps=('libc' 'ncurses')
+flags=('-doc' '-gui')
 srcdir="$name-$version"
 
 
@@ -27,4 +26,11 @@ function build() {
 
 function installpkg() {
 	default
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/usr/share/man
+	fi
+	if ( ! $flag_gui ); then
+		rm ${dest_dir}/usr/share/applications/htop.desktop
+		rm ${dest_dir}/usr/share/pixmaps/htop.png
+	fi
 }
