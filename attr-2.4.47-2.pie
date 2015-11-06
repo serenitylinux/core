@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="attr"
-iteration="2"
+iteration="3"
 version="2.4.47"
 desc="Extended attribute support library for ACL support"
 url="http://savannah.nongnu.org/projects/attr"
 src=('http://download.savannah.gnu.org/releases/attr/attr-2.4.47.src.tar.gz')
-bdeps=('libc(+dev)' 'gettext')
+bdeps=('core-build-tools' 'gettext')
 deps=('libc')
 arch=('any')
 flags=('-dev' '-doc' '+locale')

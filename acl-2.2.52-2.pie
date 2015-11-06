@@ -1,12 +1,12 @@
 # vim: ft=sh
 name="acl"
-iteration="2"
+iteration="4"
 version="2.2.52"
 desc="Access control list utilities, libraries and headers"
 url="http://savannah.nongnu.org/projects/acl"
 src=('http://download.savannah.gnu.org/releases/acl/acl-2.2.52.src.tar.gz')
-bdeps=('attr(+dev)' 'libc(+dev)')
-deps=('attr' 'libc')
+bdeps=('attr(+dev)' 'core-build-tools' 'gettext')
+deps=('attr(?dev)' 'libc')
 flags=('-dev' '-doc' '+locale')
 srcdir="$name-$version"
 

@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="libssh2"
-iteration="2"
+iteration="3"
 version="1.4.3"
 desc="A library implementing the SSH2 protocol as defined by Internet Drafts"
 url="http://www.libssh2.org/"
 src=('http://www.libssh2.org/download/libssh2-1.4.3.tar.gz')
-bdeps=('libc(+dev)' 'libssl(+dev)' 'zlib(+dev)')
+bdeps=('core-build-tools' 'libssl(+dev)' 'zlib(+dev)')
 deps=('libc' 'libssl' 'zlib')
 flags=('-dev' '-doc')
 srcdir="$name-$version"

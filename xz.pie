@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="xz"
-iteration="2"
+iteration="3"
 version="5.0.5"
 desc="Library and command line tools for XZ and LZMA compressed files"
 url="http://tukaani.org/xz/"
 src=('http://tukaani.org/xz/xz-5.0.5.tar.gz')
-bdeps=('libc(+dev)')
+bdeps=('core-build-tools')
 deps=('libc')
 flags=('-dev' '-doc' '+locale')
 srcdir="$name-$version"

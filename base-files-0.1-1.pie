@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="base-files"
-iteration="1"
+iteration="2"
 version="0.1"
 desc="Serenity Base Files"
 url="http://www.serenitylinux.org"
 src=('http://gitlab.cslabs.clarkson.edu/serenity/base.git')
-bdeps=()
+bdeps=('core-build-tools')
 deps=()
 arch=('any')
 flags=()
@@ -24,4 +24,5 @@ function installpkg() {
 	cp -a $(ls --ignore .git) $dest_dir
 	mkdir $dest_dir/root
 	mkdir $dest_dir/tmp
+	mkdir $dest_dir/proc
 }

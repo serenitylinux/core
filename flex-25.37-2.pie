@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="flex"
-iteration="2"
+iteration="4"
 version="2.5.37"
 desc="A tool for generating text-scanning programs"
 url="http://flex.sourceforge.net"
 src=('http://downloads.sourceforge.net/sourceforge/flex/flex-2.5.37.tar.bz2')
-bdeps=('libc(+dev)' 'm4')
+bdeps=('core-build-tools' 'm4')
 deps=('libc')
 flags=('-dev' '-doc' '+locale')
 srcdir="$name-$version"

@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="libcap"
-iteration="2"
+iteration="3"
 version="2.24"
 desc="POSIX 1003.1e capabilities"
 url="http://sites.google.com/site/fullycapable/"
 src=('http://mirror.clarkson.edu/linux/libs/security/linux-privs/libcap2/libcap-2.24.tar.xz')
-bdeps=('libc(+dev)' 'attr(+dev)')
+bdeps=('core-build-tools' 'attr(+dev)')
 deps=('libc' 'attr')
 flags=('-dev' '-doc')
 srcdir="$name-$version"

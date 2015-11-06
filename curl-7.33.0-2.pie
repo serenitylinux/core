@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="curl"
-iteration="2"
+iteration="3"
 version="7.33.0"
 desc="An URL retrieval utility and library"
 url="http://curl.haxx.se"
 src=('http://curl.haxx.se/download/curl-7.33.0.tar.gz')
-bdeps=('libssl(+dev)' 'zlib(+dev)' 'libssh2(+dev)' 'libc(+dev)')
+bdeps=('libssl(+dev)' 'zlib(+dev)' 'libssh2(+dev)' 'core-build-tools')
 deps=('libssl' 'zlib' 'libssh2' 'libc')
 flags=('-dev' '-doc')
 srcdir="$name-$version"

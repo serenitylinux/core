@@ -1,11 +1,11 @@
 # vim: ft=sh
 name="pam"
-iteration="2"
+iteration="3"
 version="1.1.8"
 desc="PAM (Pluggable Authentication Modules) library"
 src=('https://fedorahosted.org/releases/l/i/linux-pam/Linux-PAM-1.1.8.tar.bz2')
 url="http://www.kernel.org/pub/linux/libs/pam/"
-bdeps=('cracklib(+dev)' 'libssl(+dev)' 'libc(+dev)' 'db(+dev)' 'flex' 'libtirpc(+dev)')
+bdeps=('core-build-tools' 'cracklib(+dev)' 'libssl(+dev)' 'db(+dev)' 'flex' 'libtirpc(+dev)')
 deps=('cracklib' 'libssl' 'libc' 'db' 'libtirpc')
 flags=('-dev' '-doc' '+locale')
 srcdir="Linux-PAM-$version"
