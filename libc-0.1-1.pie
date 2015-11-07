@@ -1,8 +1,9 @@
+# vim: ft=sh
 name="libc"
-iteration="1"
-version="0.1"
+iteration="2"
+version="1.0"
 desc="Meta package for libc"
-deps=('[+dev]glibc(+dev)' '[-dev]glibc(-dev)' ) #TODO passthrough flags
+deps=('[+glibc] glibc (?dev +stage3)')
 flags=('-dev' '+glibc')
 
 

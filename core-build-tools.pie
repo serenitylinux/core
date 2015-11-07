@@ -1,10 +1,10 @@
 # vim: ft=sh
 name="core-build-tools"
-iteration="3"
+iteration="10"
 version="1.0.0"
 desc="Packages required to build most core packages"
 bdeps=('core-build-tools')
-deps=('glibc(+dev +stage2)' 'gcc(+dev +stage3)' 'binutils(+stage3)' 'bash' 'gawk' 'make' 'tar' 'coreutils' 'sed' 'grep')
+deps=('gnu-build-tools')
 arch=('any')
 
 function configure() {
