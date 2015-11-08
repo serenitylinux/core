@@ -1,0 +1,49 @@
+# vim: ft=sh
+name="perl"
+iteration="1"
+version="5.22.0"
+desc="A highly capable, feature-rich programming language"
+url="http://www.perl.org"
+src=("http://www.cpan.org/src/5.0/perl-${version}.tar.gz")
+bdeps=('gnu-build-tools' 'gdbm' 'bzip2(+dev)' 'less' 'findutils')
+deps=('gdbm' 'coreutils' 'libc' 'bash')
+flags=('-dev' '-doc' '+system_zlib' '+system_bzip2')
+srcdir="$name-$version"
+
+if ( $system_zlib ); then
+	export BUILD_ZLIB=False
+fi
+if ( $system_bzip2 ); then
+	export BUILD_BZIP2=0
+fi
+
+function configure() {
+	sh Configure \
+		-des \
+		-Dprefix=$PREFIX \
+		-Dvendorprefix=$PREFIX \
+                -Dman1dir=$PREFIX/share/man/man1 \
+                -Dman3dir=$PREFIX/share/man/man3 \
+                -Dpager="/usr/bin/less -isR" \
+		-Dlibs=-lm \
+                -Duseshrplib
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	default
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/$PREFIX/lib/perl5/core_perl/CORE/*.h
+		find ${dest_dir} -iname '*.bs' -exec rm {} \+
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/$PREFIX/share/perl5/core_perl/pod
+		find ${dest_dir} -iname '*.pod' -exec rm {} \+
+		rm -rf ${dest_dir}/$PREFIX/share/man
+	fi
+}
