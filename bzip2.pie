@@ -1,0 +1,36 @@
+# vim: ft=sh
+name="bzip2"
+iteration="4"
+version="1.0.6"
+desc="A high-quality data compression program"
+url="http://sources.redhat.com/bzip2"
+src=("http://www.bzip.org/$version/bzip2-${version}.tar.gz")
+bdeps=('core-build-tools')
+deps=('libc')
+flags=('-dev' '-doc')
+srcdir="$name-$version"
+
+
+function configure() {
+	none
+}
+
+function build() {
+	default
+}
+
+function installpkg() {
+	make PREFIX=${dest_dir}/$PREFIX install
+
+	if ( ! $flag_dev ); then
+		rm -rf ${dest_dir}/$PREFIX/lib
+		rm -rf ${dest_dir}/$PREFIX/include
+	fi
+
+	if ( ! $flag_doc ); then
+		rm -rf ${dest_dir}/$PREFIX/man
+	fi
+
+	mkdir -p $dest_dir/$PREFIX/share/licenses/$name/
+	install -m644 LICENSE $dest_dir/$PREFIX/share/licenses/$name/
+}
